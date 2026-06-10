@@ -5,6 +5,8 @@ title: Advanced Kotlin & Android Engineering
 
 A unified, deep-dive reference covering the Kotlin language, data structures, concurrency, the Android application layer, architecture, testing, and tooling — written for senior-level interview preparation and day-to-day engineering.
 
+📦 **GitHub repository:** [github.com/LeonardoBai12/AdvancedKotlinAndroidEngineering](https://github.com/LeonardoBai12/AdvancedKotlinAndroidEngineering)
+
 ---
 
 ## Part I — Language & Data Structures
