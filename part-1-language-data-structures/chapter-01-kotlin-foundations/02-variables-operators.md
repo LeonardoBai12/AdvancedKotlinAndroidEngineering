@@ -83,7 +83,7 @@ Relational operators compare values and appear in conditions, evaluating to true
 
 ### Logical
 
-Logical operators act on boolean expressions and return a boolean. **NOT** (**!** or **.not()**) inverts a value. **AND** (**&&**) is true only if both sides are true. **OR** (**||**) is true if at least one side is true. Both **&&** and **||** short-circuit — they stop evaluating as soon as the result is determined.
+Logical operators act on boolean expressions and return a boolean. **NOT** (**!** or **.not()**) inverts a value. **AND** (**&&**) is true only if both sides are true. **OR** (**\|\|**) is true if at least one side is true. Both **&&** and **\|\|** short-circuit — they stop evaluating as soon as the result is determined.
 
 *Logical operators*
 
