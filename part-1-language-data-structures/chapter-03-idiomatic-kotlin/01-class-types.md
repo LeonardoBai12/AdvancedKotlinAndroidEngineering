@@ -1,4 +1,7 @@
-# Chapter 3: Idiomatic Kotlin
+---
+layout: page
+title: "Chapter 3: Idiomatic Kotlin"
+---
 
 *The language features that set Kotlin apart — and when to reach for each*
 
@@ -180,4 +183,4 @@ Outer(10).Inner().show()        // needs an Outer instance
 
 ---
 
-[↑ Chapter Index](./README.md) · [Next: Functions & Extensions →](./02-functions-extensions.md)
+[↑ Chapter Index](../) · [Next: Functions & Extensions →](../02-functions-extensions/)

@@ -1,4 +1,7 @@
-# Chapter 18: Architecture & Pragmatic Wisdom
+---
+layout: page
+title: "Chapter 18: Architecture & Pragmatic Wisdom"
+---
 
 *Clean Architecture layers, MVVM, core classes, feature organisation, and pragmatic principles*
 
@@ -139,4 +142,4 @@ fun ProfileScreen(viewModel: ProfileViewModel, userId: String) {
 
 ---
 
-[↑ Chapter Index](./README.md) · [Next: State & DI →](./02-state-di.md)
+[↑ Chapter Index](../) · [Next: State & DI →](../02-state-di/)

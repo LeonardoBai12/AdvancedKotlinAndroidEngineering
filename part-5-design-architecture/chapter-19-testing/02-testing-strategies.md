@@ -1,4 +1,7 @@
-# Chapter 19: Testing — Testing Strategies
+---
+layout: page
+title: "Chapter 19: Testing — Testing Strategies"
+---
 
 ## Integration Tests
 
@@ -144,4 +147,4 @@ Maestro is a strong starting point, but it is worth knowing the alternatives hon
 
 ---
 
-← [Previous: Testing Fundamentals](./01-testing-fundamentals.md) · [↑ Chapter Index](./README.md)
+← [Previous: Testing Fundamentals](../01-testing-fundamentals/) · [↑ Chapter Index](../)

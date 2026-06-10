@@ -1,0 +1,87 @@
+theme: jekyll-theme-chirpy
+
+# -------------------------
+# Site metadata
+# -------------------------
+title: Advanced Kotlin & Android Engineering
+tagline: A deep-dive reference for senior-level Kotlin and Android development
+description: >-
+  Comprehensive reference covering the Kotlin language, data structures, concurrency,
+  the Android application layer, architecture, testing, and tooling.
+
+url: ""          # Set to your GitHub Pages URL when deploying, e.g. "https://username.github.io"
+baseurl: ""      # Set to "/repo-name" if deploying to a project page
+
+lang: en
+timezone: America/Sao_Paulo
+
+# -------------------------
+# Author
+# -------------------------
+github:
+  username: ""   # Your GitHub username
+
+social:
+  name: ""
+  email: ""
+  links: []
+
+# -------------------------
+# Theme preferences
+# -------------------------
+theme_mode:      # leave blank to follow system default; or "light" / "dark"
+
+avatar: "/assets/img/logo.jpg"
+
+toc: true        # show table of contents on the right sidebar
+
+# -------------------------
+# Analytics (optional — fill in if you want Google Analytics)
+# -------------------------
+google_analytics:
+  id: ""
+
+# -------------------------
+# SEO
+# -------------------------
+google_site_verification: ""
+
+# -------------------------
+# Jekyll build settings
+# -------------------------
+permalink: pretty   # /folder/page/ instead of /folder/page.html
+
+# Files/folders Jekyll should NOT process
+exclude:
+  - "*.gem"
+  - "*.gemspec"
+  - Gemfile
+  - Gemfile.lock
+  - README.md          # root repo README — homepage is index.md
+  - root.md
+  - node_modules
+  - vendor
+  - .bundle
+  - .sass-cache
+  - .jekyll-cache
+
+# Markdown processor
+markdown: kramdown
+highlighter: rouge
+
+kramdown:
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: highlight
+    span:
+      line_numbers: false
+    block:
+      line_numbers: true
+      start_line: 1
+
+# -------------------------
+# Plugins
+# -------------------------
+plugins:
+  - jekyll-sitemap
+  - jekyll-seo-tag

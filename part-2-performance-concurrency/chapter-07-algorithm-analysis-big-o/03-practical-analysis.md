@@ -1,4 +1,7 @@
-# Chapter 7: Algorithm Analysis & Big O — Practical Analysis
+---
+layout: page
+title: "Chapter 7: Algorithm Analysis & Big O — Practical Analysis"
+---
 
 ## The Interview Flow — Two Sum as a Case Study
 
@@ -182,4 +185,4 @@ Almost every interview problem belongs to a recurring pattern, and problems with
 
 ---
 
-← [Previous: Complexity Classes](./02-complexity-classes.md) · [↑ Chapter Index](./README.md)
+← [Previous: Complexity Classes](../02-complexity-classes/) · [↑ Chapter Index](../)

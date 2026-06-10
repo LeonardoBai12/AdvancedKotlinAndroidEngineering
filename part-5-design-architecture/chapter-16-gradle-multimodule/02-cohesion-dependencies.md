@@ -1,4 +1,7 @@
-# Chapter 16: Gradle & Multi-Module Architecture — Cohesion & Dependencies
+---
+layout: page
+title: "Chapter 16: Gradle & Multi-Module Architecture — Cohesion & Dependencies"
+---
 
 ## Component Cohesion — REP, CCP, and CRP
 
@@ -120,4 +123,4 @@ dependencies {
 
 ---
 
-← [Previous: Gradle & Modules](./01-gradle-and-modules.md) · [↑ Chapter Index](./README.md) · [Next: Build Tooling →](./03-build-tooling.md)
+← [Previous: Gradle & Modules](../01-gradle-and-modules/) · [↑ Chapter Index](../) · [Next: Build Tooling →](../03-build-tooling/)

@@ -1,4 +1,7 @@
-# Chapter 16: Gradle & Multi-Module Architecture — Build Tooling
+---
+layout: page
+title: "Chapter 16: Gradle & Multi-Module Architecture — Build Tooling"
+---
 
 ## Version Catalogs — the libs.versions.toml
 
@@ -215,4 +218,4 @@ Modules form a **directed acyclic graph** (DAG): dependencies point in one direc
 
 ---
 
-← [Previous: Cohesion & Dependencies](./02-cohesion-dependencies.md) · [↑ Chapter Index](./README.md)
+← [Previous: Cohesion & Dependencies](../02-cohesion-dependencies/) · [↑ Chapter Index](../)

@@ -1,4 +1,7 @@
-# Chapter 3: Idiomatic Kotlin — Language Features
+---
+layout: page
+title: "Chapter 3: Idiomatic Kotlin — Language Features"
+---
 
 ## Null Safety
 
@@ -182,4 +185,4 @@ inline fun <reified T> List<*>.filterIsInstanceOf(): List<T> =
 
 ---
 
-← [Previous: Functions & Extensions](./02-functions-extensions.md) · [↑ Chapter Index](./README.md)
+← [Previous: Functions & Extensions](../02-functions-extensions/) · [↑ Chapter Index](../)

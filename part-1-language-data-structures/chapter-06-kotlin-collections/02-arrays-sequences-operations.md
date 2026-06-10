@@ -1,4 +1,7 @@
-# Chapter 6: Kotlin Collections — Arrays, Sequences & Operations
+---
+layout: page
+title: "Chapter 6: Kotlin Collections — Arrays, Sequences & Operations"
+---
 
 ## Arrays & Primitive Arrays
 
@@ -149,4 +152,4 @@ nums.fold("") { acc, n -> "$acc$n" }  // "12345"
 
 ---
 
-← [Previous: Collection Types](./01-collection-types.md) · [↑ Chapter Index](./README.md)
+← [Previous: Collection Types](../01-collection-types/) · [↑ Chapter Index](../)

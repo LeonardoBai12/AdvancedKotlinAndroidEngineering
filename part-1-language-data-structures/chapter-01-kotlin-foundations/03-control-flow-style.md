@@ -1,4 +1,7 @@
-# Chapter 1: Kotlin Foundations — Control Flow & Style
+---
+layout: page
+title: "Chapter 1: Kotlin Foundations — Control Flow & Style"
+---
 
 ## Conditional Control Flow
 
@@ -178,4 +181,4 @@ class UpdateTaskUseCase(
 
 ---
 
-← [Previous: Variables & Operators](./02-variables-operators.md) · [↑ Chapter Index](./README.md)
+← [Previous: Variables & Operators](../02-variables-operators/) · [↑ Chapter Index](../)

@@ -1,4 +1,7 @@
-# Chapter 7: Algorithm Analysis & Big O — Complexity Classes
+---
+layout: page
+title: "Chapter 7: Algorithm Analysis & Big O — Complexity Classes"
+---
 
 ## O(1) — Constant Time
 
@@ -116,4 +119,4 @@ val byAmount = payments.sortedByDescending { it.amount } // O(N log N)
 
 ---
 
-← [Previous: Foundations](./01-foundations.md) · [↑ Chapter Index](./README.md) · [Next: Practical Analysis →](./03-practical-analysis.md)
+← [Previous: Foundations](../01-foundations/) · [↑ Chapter Index](../) · [Next: Practical Analysis →](../03-practical-analysis/)
