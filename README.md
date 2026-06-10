@@ -17,4 +17,6 @@ The content is compiled from official documentation and a handful of books I con
 - **Clean Architecture** — Robert C. Martin
 - **The Pragmatic Programmer** — David Thomas & Andrew Hunt
 
+The site is built with [Jekyll](https://jekyllrb.com/) using the [Chirpy](https://github.com/cotes2020/jekyll-theme-chirpy) theme.
+
 ---
