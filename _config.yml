@@ -9,8 +9,8 @@ description: >-
   Comprehensive reference covering the Kotlin language, data structures, concurrency,
   the Android application layer, architecture, testing, and tooling.
 
-url: ""          # Set to your GitHub Pages URL when deploying, e.g. "https://username.github.io"
-baseurl: ""      # Set to "/repo-name" if deploying to a project page
+url: "https://leonardobai12.github.io"
+baseurl: "/AdvancedKotlinAndroidEngineering"
 
 lang: en
 timezone: America/Sao_Paulo
