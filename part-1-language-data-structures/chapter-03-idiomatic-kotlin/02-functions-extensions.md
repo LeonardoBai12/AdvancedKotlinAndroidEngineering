@@ -1,4 +1,7 @@
-# Chapter 3: Idiomatic Kotlin — Functions & Extensions
+---
+layout: page
+title: "Chapter 3: Idiomatic Kotlin — Functions & Extensions"
+---
 
 ## inline functions
 
@@ -137,4 +140,4 @@ private val viewModel: MyViewModel by viewModels()
 
 ---
 
-← [Previous: Class Types](./01-class-types.md) · [↑ Chapter Index](./README.md) · [Next: Language Features →](./03-language-features.md)
+← [Previous: Class Types](../01-class-types/) · [↑ Chapter Index](../) · [Next: Language Features →](../03-language-features/)

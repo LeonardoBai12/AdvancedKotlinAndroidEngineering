@@ -1,4 +1,7 @@
-# Chapter 1: Kotlin Foundations
+---
+layout: page
+title: "Chapter 1: Kotlin Foundations"
+---
 
 *Programming basics, the JVM, data types, variables, operators, and control flow*
 
@@ -64,4 +67,4 @@ Data types determine how information is represented and manipulated. Kotlin's ba
 
 ---
 
-[↑ Chapter Index](./README.md) · [Next: Variables & Operators →](./02-variables-operators.md)
+[↑ Chapter Index](../) · [Next: Variables & Operators →](../02-variables-operators/)

@@ -1,0 +1,198 @@
+/* Avatar: square image fills the circle edge-to-edge */
+#avatar img {
+  object-fit: cover;
+  object-position: center;
+}
+
+
+/* ── Documentation navigation tree ── */
+
+.docs-divider {
+  margin: 0.5rem 1rem;
+  opacity: 0.2;
+}
+
+.docs-nav {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0.5rem 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: calc(100vh - 300px);
+  scrollbar-width: thin;
+  scrollbar-color: rgba(128,128,128,0.25) transparent;
+}
+
+/* #sidebar specificity (1,0,1) beats Chirpy's #sidebar ul { margin-bottom: 2rem } */
+#sidebar .docs-nav ul {
+  margin: 0;
+}
+
+/* ── Part headers ── */
+.docs-part-item {
+  margin-bottom: 0.25rem;
+}
+
+.docs-part-summary {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  width: 100%;
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+  border: none;
+  background: none;
+  border-radius: 0.75rem;
+  color: var(--sidebar-btn-color, inherit);
+  font-size: 0.88rem;
+  font-weight: 600;
+  user-select: none;
+  transition: background-color 0.3s ease-in-out;
+  text-align: left;
+}
+
+.docs-part-summary:hover {
+  background: var(--sidebar-hover-bg, rgba(128,128,128,0.12));
+}
+
+.docs-part-summary i {
+  margin-right: 0.5rem;
+  font-size: 0.85rem;
+  opacity: 0.75;
+  flex-shrink: 0;
+}
+
+.docs-part-summary span {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Part collapse arrow — rotates when open, via Bootstrap .collapsed class */
+.docs-part-summary::after {
+  content: "\f105";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  flex-shrink: 0;
+  margin-left: 0.4rem;
+  font-size: 0.75rem;
+  opacity: 0.5;
+  transition: transform 0.2s;
+  transform: rotate(90deg);
+}
+
+.docs-part-summary.collapsed::after {
+  transform: rotate(0deg);
+}
+
+/* ── Chapter links ── */
+.docs-chapters-list {
+  list-style: none;
+  padding: 0.1rem 0 0.4rem 1rem;
+  margin: 0;
+}
+
+.docs-chapter-item {
+  margin-bottom: 0.1rem;
+}
+
+/* Shared base for both <a> and <button> chapter rows */
+.docs-chapter-link {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  width: 100%;
+  padding: 0.38rem 0.75rem;
+  font-size: 0.82rem;
+  border-radius: 0.75rem;
+  color: var(--sidebar-btn-color, inherit);
+  text-decoration: none;
+  opacity: 0.85;
+  transition: background 0.15s, opacity 0.15s;
+  /* reset <button> defaults */
+  border: none;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+}
+
+.docs-chapter-link:hover {
+  background: var(--sidebar-hover-bg, rgba(128,128,128,0.12));
+  opacity: 1;
+  text-decoration: none;
+  color: inherit;
+}
+
+.docs-chapter-link.active {
+  background: var(--sidebar-hover-bg, rgba(128,128,128,0.15));
+  opacity: 1;
+  font-weight: 600;
+  color: var(--link-color, #007bff);
+}
+
+/* "Ch N" badge */
+.ch-num {
+  flex-shrink: 0;
+  font-size: 0.68rem;
+  font-weight: 700;
+  opacity: 0.5;
+  min-width: 2.6rem;
+  letter-spacing: 0.01em;
+}
+
+/* Chapter title text — takes remaining space */
+.docs-chapter-link span:not(.ch-num) {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Chapter collapse arrow — rotates when open, via Bootstrap .collapsed class */
+.docs-chapter-summary::after {
+  content: "\f105";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  flex-shrink: 0;
+  margin-left: 0.4rem;
+  font-size: 0.7rem;
+  opacity: 0.45;
+  transition: transform 0.2s;
+  transform: rotate(90deg);
+}
+
+.docs-chapter-summary.collapsed::after {
+  transform: rotate(0deg);
+}
+
+/* ── Section links (third level) ── */
+.docs-sections-list {
+  list-style: none;
+  padding: 0.1rem 0 0.25rem 1rem;
+  margin: 0;
+}
+
+.docs-section-link {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  padding: 0.38rem 0.75rem;
+  font-size: 0.82rem;
+  border-radius: 0.75rem;
+  color: var(--sidebar-btn-color, inherit);
+  text-decoration: none;
+  opacity: 0.8;
+  line-height: 1.4;
+  transition: background 0.15s, opacity 0.15s;
+}
+
+.docs-section-link:hover {
+  background: var(--sidebar-hover-bg, rgba(128,128,128,0.12));
+  opacity: 1;
+  text-decoration: none;
+  color: inherit;
+}
+
+.docs-section-link.active {
+  background: var(--sidebar-hover-bg, rgba(128,128,128,0.15));
+  opacity: 1;
+  font-weight: 600;
+  color: var(--link-color, #007bff);
+}

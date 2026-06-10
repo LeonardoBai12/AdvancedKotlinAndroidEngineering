@@ -1,4 +1,7 @@
-# Chapter 18: Architecture & Pragmatic Wisdom — State & DI
+---
+layout: page
+title: "Chapter 18: Architecture & Pragmatic Wisdom — State & DI"
+---
 
 ## State & Events — The State Holder Pattern
 
@@ -179,4 +182,4 @@ On a large app, wiring the graph by hand becomes tedious, so most teams adopt a 
 
 ---
 
-← [Previous: Clean Architecture & MVVM](./01-clean-architecture-mvvm.md) · [↑ Chapter Index](./README.md) · [Next: Patterns & Principles →](./03-patterns-principles.md)
+← [Previous: Clean Architecture & MVVM](../01-clean-architecture-mvvm/) · [↑ Chapter Index](../) · [Next: Patterns & Principles →](../03-patterns-principles/)

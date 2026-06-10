@@ -1,4 +1,7 @@
-# Chapter 18: Architecture & Pragmatic Wisdom — Patterns & Principles
+---
+layout: page
+title: "Chapter 18: Architecture & Pragmatic Wisdom — Patterns & Principles"
+---
 
 ## Putting It Together — A Feature in a Multi-Module App
 
@@ -94,4 +97,4 @@ Detect problems as early as possible and report them loudly — a crash at the p
 
 ---
 
-← [Previous: State & DI](./02-state-di.md) · [↑ Chapter Index](./README.md)
+← [Previous: State & DI](../02-state-di/) · [↑ Chapter Index](../)

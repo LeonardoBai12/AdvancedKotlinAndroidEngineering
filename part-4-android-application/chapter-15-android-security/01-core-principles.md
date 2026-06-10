@@ -1,4 +1,7 @@
-# Chapter 15: Android Security
+---
+layout: page
+title: "Chapter 15: Android Security"
+---
 
 *Five pragmatic practices, secure storage, networking, crypto, and OWASP*
 
@@ -113,4 +116,4 @@ android {
 
 ---
 
-[↑ Chapter Index](./README.md) · [Next: Data & Network Security →](./02-data-network-security.md)
+[↑ Chapter Index](../) · [Next: Data & Network Security →](../02-data-network-security/)

@@ -1,4 +1,7 @@
-# Chapter 7: Algorithm Analysis & Big O
+---
+layout: page
+title: "Chapter 7: Algorithm Analysis & Big O"
+---
 
 *Complexity fundamentals, the interview flow, and HashMap internals*
 
@@ -79,4 +82,4 @@ fun permutations(items: List<Int>): List<List<Int>> { /* ... */ }
 
 ---
 
-[↑ Chapter Index](./README.md) · [Next: Complexity Classes →](./02-complexity-classes.md)
+[↑ Chapter Index](../) · [Next: Complexity Classes →](../02-complexity-classes/)

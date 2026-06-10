@@ -1,4 +1,7 @@
-# Chapter 1: Kotlin Foundations — Variables & Operators
+---
+layout: page
+title: "Chapter 1: Kotlin Foundations — Variables & Operators"
+---
 
 ## Variables
 
@@ -97,4 +100,4 @@ val b = true || false           // true  -- OR needs at least one
 
 ---
 
-← [Previous: Language Basics](./01-language-basics.md) · [↑ Chapter Index](./README.md) · [Next: Control Flow & Style →](./03-control-flow-style.md)
+← [Previous: Language Basics](../01-language-basics/) · [↑ Chapter Index](../) · [Next: Control Flow & Style →](../03-control-flow-style/)

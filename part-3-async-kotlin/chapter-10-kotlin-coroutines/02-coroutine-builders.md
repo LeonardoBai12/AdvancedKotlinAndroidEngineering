@@ -1,4 +1,7 @@
-# Chapter 10: Kotlin Coroutines — Coroutine Builders
+---
+layout: page
+title: "Chapter 10: Kotlin Coroutines — Coroutine Builders"
+---
 
 ## Part 2 · Coroutine Builders
 
@@ -146,4 +149,4 @@ fun main() = runBlocking {
 
 ---
 
-← [Previous: Fundamentals](./01-fundamentals.md) · [↑ Chapter Index](./README.md) · [Next: Cancellation & Exceptions →](./03-cancellation-exceptions.md)
+← [Previous: Fundamentals](../01-fundamentals/) · [↑ Chapter Index](../) · [Next: Cancellation & Exceptions →](../03-cancellation-exceptions/)

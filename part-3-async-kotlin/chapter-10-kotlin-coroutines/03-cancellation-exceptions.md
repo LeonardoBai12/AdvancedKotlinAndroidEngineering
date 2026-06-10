@@ -1,4 +1,7 @@
-# Chapter 10: Kotlin Coroutines — Cancellation & Exceptions
+---
+layout: page
+title: "Chapter 10: Kotlin Coroutines — Cancellation & Exceptions"
+---
 
 ## Part 3 · Cancellation & Exception Handling
 
@@ -124,4 +127,4 @@ val job = lifecycleScope.launch(start = CoroutineStart.ATOMIC) {
 
 ---
 
-← [Previous: Coroutine Builders](./02-coroutine-builders.md) · [↑ Chapter Index](./README.md) · [Next: Flow →](./04-flow.md)
+← [Previous: Coroutine Builders](../02-coroutine-builders/) · [↑ Chapter Index](../) · [Next: Flow →](../04-flow/)

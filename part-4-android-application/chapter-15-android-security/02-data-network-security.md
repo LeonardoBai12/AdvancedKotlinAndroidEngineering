@@ -1,4 +1,7 @@
-# Chapter 15: Android Security — Data & Network Security
+---
+layout: page
+title: "Chapter 15: Android Security — Data & Network Security"
+---
 
 ## Secure Data Storage on Android
 
@@ -151,4 +154,4 @@ data class EncryptedData(val ciphertext: String, val iv: String)
 
 ---
 
-← [Previous: Core Principles](./01-core-principles.md) · [↑ Chapter Index](./README.md) · [Next: Hardening & Checklist →](./03-hardening-checklist.md)
+← [Previous: Core Principles](../01-core-principles/) · [↑ Chapter Index](../) · [Next: Hardening & Checklist →](../03-hardening-checklist/)

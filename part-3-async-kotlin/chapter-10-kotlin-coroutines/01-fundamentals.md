@@ -1,4 +1,7 @@
-# Chapter 10: Kotlin Coroutines
+---
+layout: page
+title: "Chapter 10: Kotlin Coroutines"
+---
 
 *Suspension, scopes, dispatchers, builders, cancellation, Flow, and Android lifecycle*
 
@@ -169,4 +172,4 @@ supScope.launch { delay(2000); println("WILL print -- unaffected") }
 
 ---
 
-[↑ Chapter Index](./README.md) · [Next: Coroutine Builders →](./02-coroutine-builders.md)
+[↑ Chapter Index](../) · [Next: Coroutine Builders →](../02-coroutine-builders/)

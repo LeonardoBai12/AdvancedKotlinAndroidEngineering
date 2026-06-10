@@ -1,4 +1,7 @@
-# Chapter 10: Kotlin Coroutines — Flow
+---
+layout: page
+title: "Chapter 10: Kotlin Coroutines — Flow"
+---
 
 ## Part 4 · Flow — Asynchronous Streams
 
@@ -242,4 +245,4 @@ class MyFragment : Fragment() {
 
 ---
 
-← [Previous: Cancellation & Exceptions](./03-cancellation-exceptions.md) · [↑ Chapter Index](./README.md)
+← [Previous: Cancellation & Exceptions](../03-cancellation-exceptions/) · [↑ Chapter Index](../)

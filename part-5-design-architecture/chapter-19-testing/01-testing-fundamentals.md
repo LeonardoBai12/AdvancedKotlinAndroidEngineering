@@ -1,4 +1,7 @@
-# Chapter 19: Testing
+---
+layout: page
+title: "Chapter 19: Testing"
+---
 
 *The testing pyramid, FIRST, unit/integration/instrumented tests, and end-to-end with Maestro*
 
@@ -175,4 +178,4 @@ class ItemListViewModelTest {
 
 ---
 
-[↑ Chapter Index](./README.md) · [Next: Testing Strategies →](./02-testing-strategies.md)
+[↑ Chapter Index](../) · [Next: Testing Strategies →](../02-testing-strategies/)

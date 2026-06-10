@@ -1,4 +1,7 @@
-# Chapter 16: Gradle & Multi-Module Architecture
+---
+layout: page
+title: "Chapter 16: Gradle & Multi-Module Architecture"
+---
 
 *The build system, modularization, incremental builds, and parallel teams*
 
@@ -147,4 +150,4 @@ Split vertically by user-facing feature: each feature is its own module containi
 
 ---
 
-[↑ Chapter Index](./README.md) · [Next: Cohesion & Dependencies →](./02-cohesion-dependencies.md)
+[↑ Chapter Index](../) · [Next: Cohesion & Dependencies →](../02-cohesion-dependencies/)

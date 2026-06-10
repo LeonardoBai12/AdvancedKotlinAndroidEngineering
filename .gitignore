@@ -1,2 +1,12 @@
 # Claude Code local settings (machine-specific, not for sharing)
 .claude/settings.local.json
+
+# Jekyll build artifacts
+_site/
+.jekyll-cache/
+.jekyll-metadata
+Gemfile.lock
+
+# Bundler local install
+vendor/bundle/
+.bundle/

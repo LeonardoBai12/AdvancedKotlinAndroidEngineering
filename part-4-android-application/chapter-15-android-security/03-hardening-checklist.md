@@ -1,4 +1,7 @@
-# Chapter 15: Android Security — Hardening & Checklist
+---
+layout: page
+title: "Chapter 15: Android Security — Hardening & Checklist"
+---
 
 ## Code Obfuscation & R8
 
@@ -55,4 +58,4 @@ android {
 
 ---
 
-← [Previous: Data & Network Security](./02-data-network-security.md) · [↑ Chapter Index](./README.md)
+← [Previous: Data & Network Security](../02-data-network-security/) · [↑ Chapter Index](../)

@@ -1,4 +1,7 @@
-# Chapter 6: Kotlin Collections
+---
+layout: page
+title: "Chapter 6: Kotlin Collections"
+---
 
 *Hierarchy, Lists, Sets, Maps, Arrays, Sequences, and the full operation toolkit*
 
@@ -165,4 +168,4 @@ println(map.size)    // 2
 
 ---
 
-[↑ Chapter Index](./README.md) · [Next: Arrays, Sequences & Operations →](./02-arrays-sequences-operations.md)
+[↑ Chapter Index](../) · [Next: Arrays, Sequences & Operations →](../02-arrays-sequences-operations/)
