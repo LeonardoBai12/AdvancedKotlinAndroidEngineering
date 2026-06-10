@@ -23,22 +23,8 @@
   scrollbar-color: rgba(128,128,128,0.25) transparent;
 }
 
-/* Normalize <details>/<summary> to behave like block/flex elements */
-.docs-nav details {
-  display: block;
-  margin: 0;
-  padding: 0;
-}
-
-.docs-nav summary {
-  display: flex;
-  margin: 0;
-  list-style: none;
-}
-
-.docs-nav summary::-webkit-details-marker { display: none; }
-
-.docs-nav ul {
+/* #sidebar specificity (1,0,1) beats Chirpy's #sidebar ul { margin-bottom: 2rem } */
+#sidebar .docs-nav ul {
   margin: 0;
 }
 
@@ -51,18 +37,19 @@
   display: flex;
   align-items: center;
   flex-wrap: nowrap;
+  width: 100%;
   padding: 0.6rem 1rem;
   cursor: pointer;
-  list-style: none;
+  border: none;
+  background: none;
   border-radius: 0.75rem;
   color: var(--sidebar-btn-color, inherit);
   font-size: 0.88rem;
   font-weight: 600;
   user-select: none;
   transition: background-color 0.3s ease-in-out;
+  text-align: left;
 }
-
-/* ::-webkit-details-marker covered by .docs-nav summary rule above */
 
 .docs-part-summary:hover {
   background: var(--sidebar-hover-bg, rgba(128,128,128,0.12));
@@ -80,7 +67,7 @@
   min-width: 0;
 }
 
-/* Part collapse arrow — always stays right */
+/* Part collapse arrow — rotates when open, via Bootstrap .collapsed class */
 .docs-part-summary::after {
   content: "\f105";
   font-family: "Font Awesome 5 Free";
@@ -90,10 +77,11 @@
   font-size: 0.75rem;
   opacity: 0.5;
   transition: transform 0.2s;
+  transform: rotate(90deg);
 }
 
-details[open] > .docs-part-summary::after {
-  transform: rotate(90deg);
+.docs-part-summary.collapsed::after {
+  transform: rotate(0deg);
 }
 
 /* ── Chapter links ── */
@@ -107,11 +95,12 @@ details[open] > .docs-part-summary::after {
   margin-bottom: 0.1rem;
 }
 
-/* Shared base for both <a> and <summary> chapter rows */
+/* Shared base for both <a> and <button> chapter rows */
 .docs-chapter-link {
   display: flex;
   align-items: center;
   flex-wrap: nowrap;
+  width: 100%;
   padding: 0.38rem 0.75rem;
   font-size: 0.82rem;
   border-radius: 0.75rem;
@@ -119,6 +108,11 @@ details[open] > .docs-part-summary::after {
   text-decoration: none;
   opacity: 0.85;
   transition: background 0.15s, opacity 0.15s;
+  /* reset <button> defaults */
+  border: none;
+  background: none;
+  text-align: left;
+  cursor: pointer;
 }
 
 .docs-chapter-link:hover {
@@ -151,13 +145,7 @@ details[open] > .docs-part-summary::after {
   min-width: 0;
 }
 
-/* Chapter-level <summary> — display/list-style covered by .docs-nav summary rule above */
-.docs-chapter-details > summary {
-  cursor: pointer;
-  user-select: none;
-}
-
-/* Chapter collapse arrow — always stays right */
+/* Chapter collapse arrow — rotates when open, via Bootstrap .collapsed class */
 .docs-chapter-summary::after {
   content: "\f105";
   font-family: "Font Awesome 5 Free";
@@ -167,10 +155,11 @@ details[open] > .docs-part-summary::after {
   font-size: 0.7rem;
   opacity: 0.45;
   transition: transform 0.2s;
+  transform: rotate(90deg);
 }
 
-.docs-chapter-details[open] > .docs-chapter-summary::after {
-  transform: rotate(90deg);
+.docs-chapter-summary.collapsed::after {
+  transform: rotate(0deg);
 }
 
 /* ── Section links (third level) ── */
