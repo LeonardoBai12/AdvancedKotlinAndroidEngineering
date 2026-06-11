@@ -172,4 +172,111 @@ supScope.launch { delay(2000); println("WILL print -- unaffected") }
 
 ---
 
+## How `suspend` Works — The State Machine
+
+Understanding what the Kotlin compiler does to a `suspend` function is the deep-dive that separates interview answers from textbook ones.
+
+### Continuation Passing Style (CPS)
+
+Every `suspend` function is transformed by the Kotlin compiler at compile time. The transformation is called **Continuation Passing Style (CPS)**. The compiler rewrites the function signature to accept an additional `Continuation<T>` parameter, and converts the function body into a **state machine**.
+
+```kotlin
+// What you write:
+suspend fun loadUser(id: String): User {
+    val token = fetchToken()          // suspension point 1
+    val user  = fetchUser(id, token)  // suspension point 2
+    return user
+}
+
+// What the compiler generates (conceptually):
+fun loadUser(id: String, continuation: Continuation<User>): Any? {
+    // State machine backing object
+    val sm = continuation as? LoadUserSM ?: LoadUserSM(continuation)
+
+    when (sm.state) {
+        0 -> {
+            sm.state = 1
+            val result = fetchToken(sm)         // pass sm as continuation
+            if (result == COROUTINE_SUSPENDED) return COROUTINE_SUSPENDED
+            sm.token = result as String
+            // fall through to state 1
+        }
+        1 -> {
+            val token = sm.token
+            sm.state = 2
+            val result = fetchUser(id, token, sm)
+            if (result == COROUTINE_SUSPENDED) return COROUTINE_SUSPENDED
+            sm.user = result as User
+            // fall through to state 2
+        }
+        2 -> {
+            sm.continuation.resumeWith(Result.success(sm.user))
+            return Unit
+        }
+    }
+}
+```
+
+The generated `LoadUserSM` class stores:
+
+- The current **state** (which suspension point we are at)
+- All local variables that must survive across suspension points
+- A reference to the **parent continuation** to resume when done
+
+### The Continuation Interface
+
+```kotlin
+interface Continuation<in T> {
+    val context: CoroutineContext
+    fun resumeWith(result: Result<T>)
+}
+```
+
+`resumeWith(Result.success(value))` resumes the coroutine with a value.
+`resumeWith(Result.failure(exception))` resumes it with an exception, which propagates normally through the state machine.
+
+### What Happens at a Suspension Point
+
+When `fetchToken(sm)` returns `COROUTINE_SUSPENDED`:
+
+1. The current function returns `COROUTINE_SUSPENDED` up the call stack
+2. The calling thread is **released** — it can do other work
+3. When `fetchToken` finishes its async work, it calls `sm.resumeWith(result)`
+4. The dispatcher re-schedules the coroutine (puts it back on a thread from the pool)
+5. Execution resumes from `sm.state = 1`
+
+This is why coroutines are "cheap" — no thread is blocked during the wait; the state is held in a small heap object.
+
+### `withContext` Internals
+
+`withContext(Dispatchers.IO)` is a suspension point that:
+
+1. Saves the current dispatcher in the continuation
+2. Submits the block to the target dispatcher's thread pool
+3. Suspends the caller
+4. When the block completes, resumes the caller on the **original dispatcher**
+
+```kotlin
+// viewModelScope uses Dispatchers.Main
+viewModelScope.launch {                    // Thread: Main
+    val data = withContext(Dispatchers.IO) {  // Thread: IO pool thread
+        repository.fetch()
+    }                                         // Thread: Main (restored)
+    _state.value = data
+}
+```
+
+The dispatcher switch has zero thread-blocking: Main thread is free during the IO operation.
+
+### Performance Implications
+
+| Concern | Answer |
+| --- | --- |
+| Does each `suspend` call allocate? | Yes — a `Continuation` object is allocated per suspension point, but it is small and short-lived |
+| Is there overhead vs raw threads? | For CPU-bound work: negligible. For IO-bound: coroutines are cheaper because fewer threads are needed |
+| Does `delay()` block a thread? | No — it posts a scheduled resumption to the dispatcher and suspends; the thread is free |
+| Is `suspend` the same as `async/await`? | Mechanically yes — Kotlin compiles to CPS the same way JavaScript compiles async/await |
+
+---
+
 [↑ Chapter Index](../) · [Next: Coroutine Builders →](../02-coroutine-builders/)

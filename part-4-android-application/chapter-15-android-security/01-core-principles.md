@@ -114,6 +114,86 @@ android {
 >
 > A cautionary tale (purely fictional, of course): a company hard-coded its database password — first in a committed .env, then directly in the source in many places, and in the worst version the credentials lived in the *frontend*, which queried the database straight from the user's browser. The lesson stands regardless of the storyteller: credentials in client code are always visible to the client. The Android parallel is hard-coding an API secret in the APK — anyone can decompile it. Secrets that the client must not see belong on a backend the client calls, never in the client itself.
 
+## Permissions Deep Dive
+
+Android's permission system is the public API for the sandboxing model described in depth in Chapter 16. From a developer's perspective, permissions gate access to sensitive APIs; from a security perspective, they are the explicit opt-in surface that limits blast radius when an app is compromised.
+
+### Protection Levels
+
+Every permission declared in the framework has a `protectionLevel` attribute that determines how it is granted:
+
+| Level | How granted | Examples |
+| --- | --- | --- |
+| `normal` | Automatically at install; user sees a summary | `INTERNET`, `VIBRATE`, `RECEIVE_BOOT_COMPLETED` |
+| `dangerous` | User must approve at runtime (Android 6+) | `CAMERA`, `READ_CONTACTS`, `ACCESS_FINE_LOCATION` |
+| `signature` | Granted only if caller shares the same signing key | Internal platform permissions, some Google services |
+| `signatureOrSystem` | Signature OR pre-installed system app | Legacy; avoid |
+| `appop` | Controlled via AppOps system service | Overlay, notification access — used internally |
+
+### Install-Time vs Runtime Permissions
+
+Before Android 6.0, all permissions were granted at install time — users either accepted everything or didn't install. Since Android 6.0 (API 23), `dangerous` permissions must be requested at runtime:
+
+```kotlin
+// Check before using a dangerous permission
+if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
+        != PackageManager.PERMISSION_GRANTED) {
+
+    // Optionally show rationale if previously denied
+    if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.CAMERA)) {
+        showCameraRationaleDialog()
+    }
+
+    // Request the permission
+    requestPermissionLauncher.launch(Manifest.permission.CAMERA)
+}
+
+// Handle the result
+val requestPermissionLauncher = registerForActivityResult(
+    ActivityResultContracts.RequestPermission()
+) { isGranted ->
+    if (isGranted) startCamera()
+    else showPermissionDeniedMessage()
+}
+```
+
+### `targetSdkVersion` and Permission Behaviour
+
+Declaring a `targetSdkVersion` is more than a compatibility marker — it activates stricter permission enforcement:
+
+| targetSdk | Behaviour change |
+| --- | --- |
+| ≥ 23 | Runtime permissions required for `dangerous` |
+| ≥ 29 | `ACCESS_BACKGROUND_LOCATION` is a separate permission from foreground location |
+| ≥ 30 | Scoped storage enforced — no broad `READ_EXTERNAL_STORAGE` for media |
+| ≥ 31 | `BLUETOOTH_SCAN` / `BLUETOOTH_CONNECT` replace old `BLUETOOTH` for BLE |
+| ≥ 33 | Per-media-type permissions (`READ_MEDIA_IMAGES`, `READ_MEDIA_VIDEO`) replace `READ_EXTERNAL_STORAGE` |
+
+### Least Privilege in Practice
+
+- Request only permissions a feature **currently** needs — not every permission the app might ever use at launch
+- Prefer scoped alternatives:
+  - **Photo Picker** (`ActivityResultContracts.PickVisualMedia`) instead of `READ_MEDIA_IMAGES`
+  - **Approximate location** (`ACCESS_COARSE_LOCATION`) instead of precise when precision is not required
+  - **`ACTION_OPEN_DOCUMENT`** instead of broad storage access
+- Every permission you hold is inherited by any code you execute — third-party SDKs run in your process under your permissions
+
+### AppOps — The Layer Below Permissions
+
+`AppOpsManager` is the system service that tracks and enforces per-app operation permissions at a finer granularity than the public permission API. Some capabilities — screen overlay, notification access, usage stats — are controlled through AppOps rather than `PackageManager` permissions, because they have per-use counting semantics or can be revoked independently.
+
+```kotlin
+val appOps = getSystemService(APP_OPS_SERVICE) as AppOpsManager
+val mode = appOps.checkOpNoThrow(
+    AppOpsManager.OPSTR_CAMERA,
+    Process.myUid(),
+    packageName
+)
+val cameraAllowed = (mode == AppOpsManager.MODE_ALLOWED)
+```
+
+This is how some permission checks work internally — the `checkSelfPermission` API ultimately calls through AppOps for dangerous permissions.
+
 ---
 
 [↑ Chapter Index](../) · [Next: Data & Network Security →](../02-data-network-security/)

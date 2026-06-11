@@ -76,6 +76,11 @@
       url: "/part-4-android-application/chapter-11-compilation-pipeline/"
     - title: "Android Lifecycle"
       url: "/part-4-android-application/chapter-12-android-lifecycle/"
+      sections:
+        - title: "Lifecycle Fundamentals"
+          url: "/part-4-android-application/chapter-12-android-lifecycle/01-lifecycle-fundamentals/"
+        - title: "Core App Components"
+          url: "/part-4-android-application/chapter-12-android-lifecycle/02-core-components/"
     - title: "Jetpack Compose Fundamentals"
       url: "/part-4-android-application/chapter-13-jetpack-compose/"
     - title: "Android Deep Links"
@@ -89,6 +94,17 @@
           url: "/part-4-android-application/chapter-15-android-security/02-data-network-security/"
         - title: "Hardening & Checklist"
           url: "/part-4-android-application/chapter-15-android-security/03-hardening-checklist/"
+    - title: "Android OS Internals"
+      url: "/part-4-android-application/chapter-16-android-os-internals/"
+      sections:
+        - title: "Linux Kernel & Architecture"
+          url: "/part-4-android-application/chapter-16-android-os-internals/01-linux-kernel/"
+        - title: "App Launch & Zygote"
+          url: "/part-4-android-application/chapter-16-android-os-internals/02-app-launch-zygote/"
+        - title: "IPC Mechanisms"
+          url: "/part-4-android-application/chapter-16-android-os-internals/03-ipc-mechanisms/"
+        - title: "Security Model: Sandboxing & SELinux"
+          url: "/part-4-android-application/chapter-16-android-os-internals/04-security-model/"
 
 - title: "Design & Architecture"
   url_prefix: "part-5"
@@ -127,6 +143,8 @@
           url: "/part-5-design-architecture/chapter-18-architecture/02-state-di/"
         - title: "Patterns & Principles"
           url: "/part-5-design-architecture/chapter-18-architecture/03-patterns-principles/"
+        - title: "Design Patterns (GoF)"
+          url: "/part-5-design-architecture/chapter-18-architecture/04-design-patterns/"
     - title: "Testing"
       url: "/part-5-design-architecture/chapter-19-testing/"
       sections:
