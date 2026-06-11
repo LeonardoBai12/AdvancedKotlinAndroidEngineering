@@ -120,6 +120,156 @@ android {
 >
 > Build types are also where your security configuration takes effect: secrets are injected per build type here — placeholder values in debug, and real values pulled from CI/CD environment variables in release — so that no credential is ever hard-coded into the source or committed to version control.
 
+## NDK & JNI
+
+The **NDK (Native Development Kit)** lets you write parts of an Android app in C/C++. The **JNI (Java Native Interface)** is the bridge that lets Kotlin/Java code call into native code and vice versa. Both are part of the compilation pipeline because native code is compiled separately (by Clang/LLVM) and packaged as `.so` (shared library) files inside the APK.
+
+### When to Use the NDK
+
+| Reason | Example |
+| --- | --- |
+| Performance-critical computation | Signal processing, image codecs, game physics |
+| Reuse existing C/C++ libraries | OpenCV, SQLCipher, BoringSSL |
+| Harder to reverse-engineer | Native code requires disassemblers (Ghidra, IDA) rather than Smali decompilers |
+| Direct syscalls | Bypassing Java layer for low-level operations |
+
+### JNI Bridge — How Kotlin Calls Native
+
+```kotlin
+// Kotlin side — declare external function
+class CryptoEngine {
+    external fun encryptBytes(data: ByteArray, key: ByteArray): ByteArray
+
+    companion object {
+        init { System.loadLibrary("cryptoengine") }  // loads libcryptoengine.so
+    }
+}
+```
+
+```c
+// C side — function name must match exactly, or use RegisterNatives
+// Pattern: Java_<package_underscored>_<class>_<method>
+JNIEXPORT jbyteArray JNICALL
+Java_com_example_CryptoEngine_encryptBytes(
+        JNIEnv *env,
+        jobject thiz,
+        jbyteArray data,
+        jbyteArray key) {
+
+    jbyte *dataPtr = (*env)->GetByteArrayElements(env, data, NULL);
+    jsize dataLen  = (*env)->GetArrayLength(env, data);
+
+    // ... do encryption ...
+
+    (*env)->ReleaseByteArrayElements(env, data, dataPtr, JNI_ABORT);
+    // return result as jbyteArray
+}
+```
+
+### RegisterNatives — Dynamic Method Registration
+
+The default name-based lookup ties your C function names to your Java package structure. `RegisterNatives` lets you map arbitrary C function pointers to JNI methods at runtime — commonly used to make the mapping harder to discover by static analysis:
+
+```c
+static const JNINativeMethod methods[] = {
+    {"encryptBytes", "([B[B)[B", (void*)nativeEncrypt},
+    {"decryptBytes", "([B[B)[B", (void*)nativeDecrypt},
+};
+
+JNIEXPORT jint JNI_OnLoad(JavaVM *vm, void *reserved) {
+    JNIEnv *env;
+    (*vm)->GetEnv(vm, (void**)&env, JNI_VERSION_1_6);
+    jclass cls = (*env)->FindClass(env, "com/example/CryptoEngine");
+    (*env)->RegisterNatives(env, cls, methods, 2);
+    return JNI_VERSION_1_6;
+}
+```
+
+### JNI Type Signatures
+
+```text
+Z → boolean    B → byte     C → char     S → short
+I → int        J → long     F → float    D → double
+L<class>;      → object     [<type>      → array
+```
+
+`([B[B)[B` reads as: method taking two `byte[]` arguments, returning a `byte[]`.
+
+### NDK Build Integration
+
+```kotlin
+// build.gradle.kts
+android {
+    defaultConfig {
+        externalNativeBuild {
+            cmake { cppFlags("-std=c++17", "-O2") }
+        }
+        ndk { abiFilters += listOf("arm64-v8a", "x86_64") }
+    }
+    externalNativeBuild {
+        cmake { path("src/main/cpp/CMakeLists.txt") }
+    }
+}
+```
+
+```cmake
+# CMakeLists.txt
+cmake_minimum_required(VERSION 3.22.1)
+project("cryptoengine")
+add_library(cryptoengine SHARED cryptoengine.cpp)
+target_link_libraries(cryptoengine android log)
+```
+
+---
+
+## Reflection
+
+Reflection lets you inspect and invoke code at runtime by name, bypassing the compile-time visibility checks. It is available via `java.lang.reflect` and Kotlin's `kotlin.reflect` packages.
+
+### Core Operations
+
+```kotlin
+// Get a class by name (breaks under R8 if class is renamed)
+val cls = Class.forName("com.example.MyClass")
+
+// Access a private field
+val field = cls.getDeclaredField("secret")
+field.isAccessible = true
+val value = field.get(instance)
+
+// Invoke a private method
+val method = cls.getDeclaredMethod("internalProcess", String::class.java)
+method.isAccessible = true
+val result = method.invoke(instance, "arg")
+
+// Kotlin-idiomatic reflection (type-safe, but same runtime mechanism)
+val prop = MyClass::class.memberProperties.find { it.name == "secret" }
+```
+
+### Reflection and Obfuscation — the Critical Interaction
+
+When R8 renames a class from `MyClass` to `a`, any `Class.forName("com.example.MyClass")` call breaks at runtime with `ClassNotFoundException`. R8 cannot know about string literals that happen to be class names.
+
+```kotlin
+// BREAKS under R8 (string is not tracked by R8)
+val cls = Class.forName("com.example.MyRepository")
+
+// SAFE — R8 tracks class references, not string literals
+val cls = MyRepository::class.java
+
+// Also safe — KClass reference is tracked
+val cls = MyRepository::class
+```
+
+**Rule:** if you must use reflection, use class literals (`MyClass::class.java`) or add a `-keep` ProGuard rule. Never use string-based lookup on a class you own unless it is explicitly kept.
+
+### Uses in Android
+
+- **Dependency injection frameworks**: Dagger/Hilt use KSP (compile-time), not reflection — this is why they're faster than older DI frameworks
+- **JSON serialization**: Gson uses reflection; Moshi uses either reflection or code generation (code gen is faster and R8-safe)
+- **Testing**: `@VisibleForTesting` + reflection to access internals; Mockito uses reflection to create mocks
+- **Plugin systems**: loading classes dynamically from a secondary DEX or downloaded module
+
 ---
 
 [↑ Chapter Index](../)
