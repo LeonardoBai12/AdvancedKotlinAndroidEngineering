@@ -43,9 +43,9 @@ class ProfileViewModel(private val profileRepo: ProfileRepository) : ViewModel()
 
 ### ISP at the architecture level
 
-Martin's deeper concern in *Clean Architecture* (Ch. 10) is **architectural**: *"em geral, é prejudicial depender de módulos que contenham mais elementos do que você precisa."* The harm shows up not just in unused method implementations but in transitive recompilation and redeployment.
+Martin's deeper concern in *Clean Architecture* (Ch. 10) is **architectural**: *"in general, it is harmful to depend on modules that contain more elements than you need."* The harm shows up not just in unused method implementations but in transitive recompilation and redeployment.
 
-Consider: System S integrates Framework F, which was compiled with Database D as a transitive dependency. If D contains features that neither F nor S needs, a change to those unused features in D can still force recompilation and redeployment of F — and by transitivity, of S. A failure in an unused part of D can cascade up to S. *"Aprenda essa lição: depender de algo que contém itens desnecessários pode causar problemas inesperados."* (Martin, R.C. — Clean Architecture, Ch. 10 — The Interface Segregation Principle)
+Consider: System S integrates Framework F, which was compiled with Database D as a transitive dependency. If D contains features that neither F nor S needs, a change to those unused features in D can still force recompilation and redeployment of F — and by transitivity, of S. A failure in an unused part of D can cascade up to S. *"Learn this lesson: depending on something that contains unnecessary items can cause unexpected problems."* (Martin, R.C. — Clean Architecture, Ch. 10 — The Interface Segregation Principle)
 
 This architectural reading of ISP is why the CRP (Common Reuse Principle, in the Gradle/Multi-Module chapter) uses almost the same language: *"don't force users of a component to depend on things they don't need."* ISP and CRP are the same idea stated at different scales — class-level vs. module/component-level.
 

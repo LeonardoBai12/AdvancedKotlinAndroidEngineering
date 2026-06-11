@@ -67,7 +67,7 @@ class UserViewModel : ViewModel() {
 >
 > Kotlin data classes expose their constructor properties publicly by default. For value objects this is fine, but prefer immutable **val** properties and the generated **copy()** method over mutable **var** fields, so the object cannot be changed under you after creation.
 
-Martin makes a pointed observation in *Clean Architecture* (Ch. 5 — Object-Oriented Programming): Java and Kotlin actually weakened encapsulation compared to what C achieved through header files. In C, callers could see only the function signatures in the header — the private member variables were invisible. In Java and Kotlin the class declaration and its implementation live in the same file, so the compiler technically sees the private fields even though it cannot access them. *"A OO certamente depende da ideia de que os programadores são bem comportados o suficiente para não contornar os dados encapsulados."* (Martin, ibid.) In practice this is not a crisis, but it is a useful reminder that encapsulation is partly a convention upheld by the type system and partly a discipline upheld by the team.
+Martin makes a pointed observation in *Clean Architecture* (Ch. 5 — Object-Oriented Programming): Java and Kotlin actually weakened encapsulation compared to what C achieved through header files. In C, callers could see only the function signatures in the header — the private member variables were invisible. In Java and Kotlin the class declaration and its implementation live in the same file, so the compiler technically sees the private fields even though it cannot access them. *"OO certainly depends on the idea that programmers are well-behaved enough not to circumvent encapsulated data."* (Martin, ibid.) In practice this is not a crisis, but it is a useful reminder that encapsulation is partly a convention upheld by the type system and partly a discipline upheld by the team.
 
 ## 2. Inheritance
 
@@ -123,7 +123,7 @@ class UserRepository(logger: Logger) : Logger by logger {
 }
 ```
 
-Martin's observation in *Clean Architecture* (Ch. 5) is worth noting: inheritance is not entirely new to OO. *"A herança é simplesmente a redeclaração de um grupo de variáveis e funções dentro de um escopo fechado. Mas os programadores já eram capazes de fazer isso manualmente no C muito antes de existir uma linguagem OO."* (Martin, ibid.) What OO languages added was **compiler enforcement** — the is-a relationship, override validation, and virtual dispatch — turning what was a manual and fragile technique into a first-class, safe language feature. That enforcement is genuinely valuable; the insight is that the idea itself is not unique to OO.
+Martin's observation in *Clean Architecture* (Ch. 5) is worth noting: inheritance is not entirely new to OO. *"Inheritance is simply the redeclaration of a group of variables and functions within a closed scope. But programmers were already able to do this manually in C long before OO languages existed."* (Martin, ibid.) What OO languages added was **compiler enforcement** — the is-a relationship, override validation, and virtual dispatch — turning what was a manual and fragile technique into a first-class, safe language feature. That enforcement is genuinely valuable; the insight is that the idea itself is not unique to OO.
 
 ## 3. Polymorphism
 
@@ -177,12 +177,11 @@ fun render(state: UiState) = when (state) {  // no 'else' needed
 
 ### The architectural power: polymorphism enables dependency inversion
 
-Polymorphic behaviour predates OO languages. In Unix's C-based I/O system, every device driver exposes five standard functions: `open`, `close`, `read`, `write`, and `seek`. The kernel calls these functions through what are effectively function-pointer tables — it does not know whether it is talking to a disk, a terminal, or a network socket; it just calls the same five functions. *"É como se STDIN e STDOUT fossem interfaces ao estilo Java, com implementações para cada dispositivo."* (Martin, R.C. — Clean Architecture, Ch. 5 — Object-Oriented Programming) The polymorphic behaviour was there; what it lacked was safety and convenience — one wrong pointer assignment and the program crashed silently.
+Polymorphic behaviour predates OO languages. In Unix's C-based I/O system, every device driver exposes five standard functions: `open`, `close`, `read`, `write`, and `seek`. The kernel calls these functions through what are effectively function-pointer tables — it does not know whether it is talking to a disk, a terminal, or a network socket; it just calls the same five functions. *"It is as though STDIN and STDOUT were Java-style interfaces, with implementations for each device."* (Martin, R.C. — Clean Architecture, Ch. 5 — Object-Oriented Programming) The polymorphic behaviour was there; what it lacked was safety and convenience — one wrong pointer assignment and the program crashed silently.
 
 What OO languages gave us was polymorphism that is **safe and convenient**, without manually managing function-pointer tables. And from safe, convenient polymorphism follows a profound architectural consequence:
 
-> *"Qualquer dependência de código fonte, não importa onde esteja, pode ser invertida."*
-> ("Any source-code dependency, regardless of where it is, can be inverted.")
+> *"Any source-code dependency, regardless of where it is, can be inverted."*
 > *(Martin, R.C. — Clean Architecture, Ch. 5 — Object-Oriented Programming)*
 
 Inserting an interface between a caller and a concrete class allows the source-code dependency to point in the *opposite direction* from the control flow at runtime:
@@ -253,7 +252,7 @@ Because the ViewModel depends on the abstraction, you can swap a real network re
 
 > **Key Insight:**
 >
-> Martin's conclusion in *Clean Architecture* (Ch. 5) reframes what OO actually is: *"a OO é a habilidade de obter controle absoluto, através do uso do polimorfismo, sobre cada dependência de código fonte do sistema."* It allows architects to create a plug-in architecture with modules containing high-level policies that are independent of modules containing low-level details. Low-level details are relegated to plug-in modules that can be deployed and developed independently. Encapsulation and inheritance are supporting pillars; **polymorphism and the dependency inversion it enables is the core architectural gift of OO**.
+> Martin's conclusion in *Clean Architecture* (Ch. 5) reframes what OO actually is: *"OO is the ability to gain absolute control, through the use of polymorphism, over every source-code dependency in the system."* It allows architects to create a plug-in architecture with modules containing high-level policies that are independent of modules containing low-level details. Low-level details are relegated to plug-in modules that can be deployed and developed independently. Encapsulation and inheritance are supporting pillars; **polymorphism and the dependency inversion it enables is the core architectural gift of OO**.
 > *(Martin, R.C. — Clean Architecture: A Craftsman's Guide to Software Structure and Design, Ch. 5 — Object-Oriented Programming)*
 
 ---

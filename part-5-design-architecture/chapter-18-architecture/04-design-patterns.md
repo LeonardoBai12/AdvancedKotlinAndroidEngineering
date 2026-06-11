@@ -180,7 +180,7 @@ Structural patterns describe how classes and objects are composed to form larger
 
 **Intent:** Convert the interface of a class into another interface clients expect. Allows classes with incompatible interfaces to work together.
 
-The GoF book labels this "também conhecido como Wrapper" — and Android uses it by that exact name (`TextureView` wraps `SurfaceTexture`). The Adapter does not change either side; it bridges the gap between them.
+The GoF book labels this "also known as Wrapper" — and Android uses it by that exact name (`TextureView` wraps `SurfaceTexture`). The Adapter does not change either side; it bridges the gap between them.
 
 ```kotlin
 // Third-party SDK returns its own Location type
@@ -208,6 +208,7 @@ fun formatCoordinate(loc: LocationSource) =
 ```
 
 Android SDK sightings:
+
 - `RecyclerView.Adapter` — adapts a `List<T>` to `View`s
 - `CursorAdapter` — adapts a database `Cursor` to `ListView` rows
 - `OkHttp`'s `Call.Factory` — adapts different HTTP backends to a uniform interface
