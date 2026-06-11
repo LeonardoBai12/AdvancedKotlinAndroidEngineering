@@ -12,7 +12,7 @@ In plain terms: **if code works correctly with the base type, it must continue t
 
 ### What compliance looks like
 
-Martin's canonical example of a correct LSP design in *Clean Architecture* (Ch. 9): a `Billing` application depends on a `License` interface. `PersonalLicense` and `BusinessLicense` are two implementations, each using a different fee algorithm. The application's behaviour does not depend on which subtype it receives — both are fully substitutable for `License`. *"Este design está de acordo com o LSP porque o comportamento da aplicação Billing não depende, de maneira alguma, da utilização de qualquer dos subtipos. Ambos os subtipos são substituíveis pelo tipo License."* (Martin, ibid.)
+Martin's canonical example of a correct LSP design in *Clean Architecture* (Ch. 9): a `Billing` application depends on a `License` interface. `PersonalLicense` and `BusinessLicense` are two implementations, each using a different fee algorithm. The application's behaviour does not depend on which subtype it receives — both are fully substitutable for `License`. *"This design complies with the LSP because the behaviour of the Billing application does not depend, in any way, on the use of either subtype. Both subtypes are substitutable for the License type."* (Martin, ibid.)
 
 ```kotlin
 interface License { fun calcFee(): Money }

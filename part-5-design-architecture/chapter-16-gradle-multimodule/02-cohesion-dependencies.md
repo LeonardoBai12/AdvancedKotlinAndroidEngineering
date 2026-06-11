@@ -9,7 +9,7 @@ The two strategies above tell you *how* to draw module boundaries. Robert C. Mar
 
 ### REP — Reuse/Release Equivalence Principle
 
-*"A granularidade do reúso é a granularidade do release"* — the granularity of reuse is the granularity of release (Martin, *Clean Architecture*, Ch. 13). Classes and modules grouped into a component must be **releasable as a unit**: they must share a coherent theme or purpose that makes sense both to the author who publishes them and to the consumer who depends on them. Without versioned releases, consumers cannot guarantee compatibility when a component changes; without a coherent theme, the release documentation is meaningless.
+*"The granularity of reuse is the granularity of release"* (Martin, *Clean Architecture*, Ch. 13). Classes and modules grouped into a component must be **releasable as a unit**: they must share a coherent theme or purpose that makes sense both to the author who publishes them and to the consumer who depends on them. Without versioned releases, consumers cannot guarantee compatibility when a component changes; without a coherent theme, the release documentation is meaningless.
 
 The practical implication: a `:core:network` module that bundles Retrofit client configuration, authentication interceptors, and logging utilities is releasable as a unit because they all serve the same purpose — network communication. If you add unrelated analytics utilities to it, you've violated REP: now every consumer of the analytics utilities must accept unnecessary releases whenever the network stack changes.
 
@@ -28,7 +28,7 @@ class AnalyticsTracker { ... }  // belongs in :core:analytics
 
 ### CCP — Common Closure Principle
 
-*"Reúna em componentes as classes que mudam pelas mesmas razões e nos mesmos momentos. Separe em componentes diferentes as classes que mudam em momentos diferentes e por diferentes razões."* (Martin, *Clean Architecture*, Ch. 13). This is SRP applied at the module level: just as a class should have only one reason to change, a module should have only one reason to change.
+*"Gather into components the classes that change for the same reasons at the same times. Separate into different components the classes that change at different times and for different reasons."* (Martin, *Clean Architecture*, Ch. 13). This is SRP applied at the module level: just as a class should have only one reason to change, a module should have only one reason to change.
 
 Martin's emphasis is practical: in most applications, **maintainability matters more than reusability**. When a requirement changes, you want all the affected code to live in one module — so you revalidate and redeploy that one module, and leave the rest untouched. If a single requirement change ripples across five modules, CCP is being violated.
 
@@ -48,11 +48,11 @@ class TokenRefreshHandler { ... }  // auth changes → rebuilds unrelated checko
 ```
 
 > **Similarity with SRP (Martin, *Clean Architecture*):**
-> *"Reuna tudo que muda ao mesmo tempo pelas mesmas razões. Separe tudo que muda em tempos diferentes por razões diferentes."* CCP is CCP-as-component, SRP is CCP-as-class.
+> *"Gather everything that changes at the same time for the same reasons. Separate everything that changes at different times for different reasons."* CCP is CCP-as-component, SRP is CCP-as-class.
 
 ### CRP — Common Reuse Principle
 
-*"Não force os usuários de um componente a dependerem de coisas que eles não precisam."* (Martin, *Clean Architecture*, Ch. 13). When module A depends on module B, it depends on **all** of B's classes — even the ones it never uses. If any class in B changes, A must be recompiled, revalidated, and potentially redeployed, even if the changed class is irrelevant to A. CRP says: don't create that burden. Classes that are not used together should not live in the same module.
+*"Do not force users of a component to depend on things they do not need."* (Martin, *Clean Architecture*, Ch. 13). When module A depends on module B, it depends on **all** of B's classes — even the ones it never uses. If any class in B changes, A must be recompiled, revalidated, and potentially redeployed, even if the changed class is irrelevant to A. CRP says: don't create that burden. Classes that are not used together should not live in the same module.
 
 Martin notes that CRP tells us more about which classes **should not** be together than which should. The question is not just "do these classes share a theme?" but also "does depending on one force you to depend on all the others?"
 
@@ -71,7 +71,7 @@ object StringExtensions { ... } // ← unrelated
 ```
 
 > **Relationship with ISP (Martin, *Clean Architecture*):**
-> *"O CRP é uma versão genérica do ISP. O ISP aconselha a não depender de classes que contenham métodos que não usamos. Já o CRP orienta a não depender de componentes que tenham classes que não usamos."* Both reduce to the same rule: *don't depend on things you don't need.*
+> *"CRP is a generic version of ISP. ISP advises not to depend on classes that contain methods we do not use. CRP advises not to depend on components that contain classes we do not use."* Both reduce to the same rule: *don't depend on things you don't need.*
 
 ### The Tension Diagram
 
