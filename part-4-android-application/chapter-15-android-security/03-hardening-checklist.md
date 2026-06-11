@@ -32,7 +32,7 @@ This is where most R8 configurations break. R8 renames a class implementing an i
 
 **Enums**: `values()` and `valueOf()` are called by name by serialisation frameworks.
 
-```proguard
+```text
 # Keep all interface implementations found via service locator / DI
 -keep class * implements com.example.repo.Repository { *; }
 
@@ -72,7 +72,7 @@ This is where most R8 configurations break. R8 renames a class implementing an i
 
 By default R8 uses `a`, `b`, `c`… for renamed identifiers. You can replace these with visually confusing lookalikes that are valid Java identifiers but hard for a human to read:
 
-```proguard
+```text
 # dict.txt — confusing but legal identifiers
 ll
 lI
@@ -82,7 +82,7 @@ lIl
 IlI
 ```
 
-```proguard
+```text
 # proguard-rules.pro
 -obfuscationdictionary       dict.txt   # method and field names
 -classobfuscationdictionary  dict.txt   # class names
