@@ -11,3 +11,4 @@ title: "Chapter 10: Kotlin Coroutines"
 2. [Coroutine Builders](./02-coroutine-builders/)
 3. [Cancellation & Exceptions](./03-cancellation-exceptions/)
 4. [Flow](./04-flow/)
+5. [Channels](./05-channels/)

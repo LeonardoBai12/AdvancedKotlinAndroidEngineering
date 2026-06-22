@@ -17,3 +17,5 @@ Android-specific internals: the compilation pipeline, lifecycle, Jetpack Compose
 | 14 | [Deep Links & Navigation](./chapter-14-deep-links/) | URI routing, explicit/implicit deep links, NavController |
 | 15 | [Android Security](./chapter-15-android-security/) | Attack surface, encryption, secrets, TLS, certificate pinning, permissions, emulator detection, app signing, OWASP Mobile Top 10 |
 | 16 | [Android OS Internals](./chapter-16-android-os-internals/) | Linux kernel, app launch at kernel level, Zygote, Binder IPC, sandboxing, SELinux |
+| 20 | [Background Work & Notifications](./chapter-20-background-work-notifications/) | WorkManager (constraints, chaining, unique work, expedited), BroadcastReceiver (static/dynamic, goAsync, Android 8+ restrictions, NetworkCallback), Notifications (channels, styles, scheduling, permissions), Foreground Services (types, Android 14 enforcement, lifecycle) |
+| 21 | [Platform Constraints & Push](./chapter-21-platform-constraints-push/) | Doze Mode, App Standby Buckets, battery optimisation, AlarmManager (full API), FCM (push notifications, data vs notification messages, token management), background execution limits history |
