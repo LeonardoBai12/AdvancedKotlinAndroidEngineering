@@ -11,4 +11,4 @@ Kotlin's concurrency model: coroutines, structured concurrency, cancellation, ex
 
 | # | Chapter | Topics |
 | --- | --- | --- |
-| 10 | [Kotlin Coroutines & Flow](./chapter-10-kotlin-coroutines/) | Fundamentals, builders, dispatchers, cancellation, exception handling, Flow |
+| 10 | [Kotlin Coroutines & Flow](./chapter-10-kotlin-coroutines/) | Fundamentals, builders, dispatchers, cancellation, exception handling, Flow, Channels |
