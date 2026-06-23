@@ -377,4 +377,4 @@ The pattern for full coverage: `NetworkCallback` for real-time UI reactions whil
 
 ---
 
-← [Previous: WorkManager](../01-workmanager/) · [↑ Chapter Index](../) · [Next: Notifications →](../03-notifications/)
+← [Previous: WorkManager](../02-workmanager/) · [↑ Chapter Index](../) · [Next: Notifications →](../04-notifications/)

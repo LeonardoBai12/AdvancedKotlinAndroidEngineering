@@ -486,4 +486,4 @@ Always use `NotificationCompat.Builder` from `androidx.core`, not `android.app.N
 
 ---
 
-← [Previous: BroadcastReceiver](../02-broadcast-receiver/) · [↑ Chapter Index](../) · [Next: Foreground Services →](../04-foreground-services/)
+← [Previous: BroadcastReceiver](../03-broadcast-receiver/) · [↑ Chapter Index](../) · [Next: Foreground Services →](../05-foreground-services/)
