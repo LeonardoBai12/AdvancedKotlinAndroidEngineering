@@ -9,7 +9,8 @@ Android's background-work stack, broadcast system, and notification API — when
 
 ## Contents
 
-1. [WorkManager](./01-workmanager/)
-2. [BroadcastReceiver](./02-broadcast-receiver/)
-3. [Notifications](./03-notifications/)
-4. [Foreground Services](./04-foreground-services/)
+1. [Services](./01-services/)
+2. [WorkManager](./02-workmanager/)
+3. [BroadcastReceiver](./03-broadcast-receiver/)
+4. [Notifications](./04-notifications/)
+5. [Foreground Services](./05-foreground-services/)

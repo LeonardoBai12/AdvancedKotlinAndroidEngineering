@@ -81,7 +81,7 @@ The site is built with [Jekyll](https://jekyllrb.com/) using the [Chirpy](https:
 | [13 · Jetpack Compose](part-4-android-application/chapter-13-jetpack-compose/)               | Composables, state, recomposition, side effects                            |
 | [14 · Deep Links & Navigation](part-4-android-application/chapter-14-deep-links/)            | URI routing, explicit/implicit deep links, NavController                   |
 | [15 · Android Security](part-4-android-application/chapter-15-android-security/)             | Attack surface, encryption, secrets, network security, OWASP Mobile Top 10 |
-| [20 · Background Work & Notifications](part-4-android-application/chapter-20-background-work-notifications/) | WorkManager, BroadcastReceiver, Notifications — scheduling, channels, styles, permissions, Foreground Services |
+| [20 · Background Work & Notifications](part-4-android-application/chapter-20-background-work-notifications/) | Services (started/bound, Binder, Messenger, AIDL), WorkManager, BroadcastReceiver, Notifications, Foreground Services |
 | [21 · Platform Constraints & Push](part-4-android-application/chapter-21-platform-constraints-push/) | Doze Mode, App Standby Buckets, battery optimisation, AlarmManager, FCM, background limits history |
 
 ## Part V — Design & Architecture
