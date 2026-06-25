@@ -10,6 +10,9 @@ has_children: true
 
 ## Contents
 
-1. [SRP & OCP](./01-srp-ocp/)
-2. [LSP & ISP](./02-lsp-isp/)
-3. [DIP & Quick Reference](./03-dip-reference/)
+1. [SRP](./01-srp/)
+2. [OCP](./02-ocp/)
+3. [LSP](./03-lsp/)
+4. [ISP](./04-isp/)
+5. [DIP](./05-dip/)
+6. [Quick Reference](./06-quick-reference/)
