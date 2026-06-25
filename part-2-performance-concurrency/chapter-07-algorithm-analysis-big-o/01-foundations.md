@@ -1,6 +1,8 @@
 ---
-layout: page
+layout: default
 title: "Chapter 7: Algorithm Analysis & Big O"
+parent: "Chapter 7: Algorithm Analysis & Big O"
+nav_order: 1
 ---
 
 *Complexity fundamentals, the interview flow, and HashMap internals*

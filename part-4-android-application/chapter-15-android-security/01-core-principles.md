@@ -1,6 +1,8 @@
 ---
-layout: page
+layout: default
 title: "Chapter 15: Android Security"
+parent: "Chapter 15: Android Security"
+nav_order: 1
 ---
 
 *Five pragmatic practices, secure storage, networking, crypto, and OWASP*

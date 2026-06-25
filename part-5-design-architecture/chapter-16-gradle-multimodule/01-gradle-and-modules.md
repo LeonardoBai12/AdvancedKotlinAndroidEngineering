@@ -1,6 +1,8 @@
 ---
-layout: page
+layout: default
 title: "Chapter 16: Gradle & Multi-Module Architecture"
+parent: "Chapter 16: Gradle & Multi-Module Architecture"
+nav_order: 1
 ---
 
 *The build system, modularization, incremental builds, and parallel teams*

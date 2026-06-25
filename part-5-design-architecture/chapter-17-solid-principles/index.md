@@ -1,6 +1,9 @@
 ---
-layout: page
+layout: default
 title: "Chapter 17: SOLID Principles"
+parent: "Part V — Design & Architecture"
+nav_order: 2
+has_children: true
 ---
 
 *[← Back to Part](../)*

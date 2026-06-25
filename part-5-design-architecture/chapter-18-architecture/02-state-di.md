@@ -1,6 +1,8 @@
 ---
-layout: page
+layout: default
 title: "Chapter 18: Architecture & Pragmatic Wisdom — State & DI"
+parent: "Chapter 18: Architecture & Pragmatic Wisdom"
+nav_order: 2
 ---
 
 ## State & Events — The State Holder Pattern

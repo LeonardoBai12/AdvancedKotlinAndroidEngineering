@@ -1,6 +1,8 @@
 ---
-layout: page
+layout: default
 title: "Chapter 10: Kotlin Coroutines — Flow"
+parent: "Chapter 10: Kotlin Coroutines"
+nav_order: 4
 ---
 
 ## Part 4 · Flow — Asynchronous Streams

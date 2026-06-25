@@ -1,6 +1,9 @@
 ---
-layout: page
+layout: default
 title: "Chapter 20: Background Work & Notifications"
+parent: "Part IV — Android Application Layer"
+nav_order: 7
+has_children: true
 ---
 
 *[← Back to Part](../)*

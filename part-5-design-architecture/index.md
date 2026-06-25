@@ -1,6 +1,8 @@
 ---
-layout: page
+layout: default
 title: "Part V — Design & Architecture"
+nav_order: 6
+has_children: true
 ---
 
 *[← Back to Guide Index](../)*

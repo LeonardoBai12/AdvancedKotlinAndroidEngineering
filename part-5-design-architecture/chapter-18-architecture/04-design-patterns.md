@@ -1,6 +1,8 @@
 ---
-layout: page
+layout: default
 title: "Chapter 18: Architecture & Pragmatic Wisdom — Design Patterns"
+parent: "Chapter 18: Architecture & Pragmatic Wisdom"
+nav_order: 4
 ---
 
 *GoF creational, structural, and behavioral patterns with Kotlin examples*

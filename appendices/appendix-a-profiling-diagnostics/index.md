@@ -1,6 +1,8 @@
 ---
-layout: page
+layout: default
 title: "Appendix A: Profiling & Diagnostic Tools"
+parent: Appendices
+nav_order: 1
 ---
 *Finding memory leaks, UI jank, and performance problems with Android Studio*
 

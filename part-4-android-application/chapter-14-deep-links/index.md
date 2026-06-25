@@ -1,6 +1,9 @@
 ---
-layout: page
+layout: default
 title: "Chapter 14: Android Deep Links"
+parent: "Part IV — Android Application Layer"
+nav_order: 4
+has_children: true
 ---
 *Custom links, web links, App Links, Compose navigation, testing, and verification*
 

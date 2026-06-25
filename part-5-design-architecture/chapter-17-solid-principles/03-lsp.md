@@ -1,6 +1,8 @@
 ---
-layout: page
+layout: default
 title: "L — Liskov Substitution Principle"
+parent: "Chapter 17: SOLID Principles"
+nav_order: 3
 ---
 
 Barbara Liskov stated the principle in 1988:

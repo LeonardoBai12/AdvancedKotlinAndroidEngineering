@@ -1,6 +1,8 @@
 ---
-layout: page
+layout: default
 title: "Chapter 20: Background Work & Notifications — Services"
+parent: "Chapter 20: Background Work & Notifications"
+nav_order: 1
 ---
 
 ## Section 1 · Services

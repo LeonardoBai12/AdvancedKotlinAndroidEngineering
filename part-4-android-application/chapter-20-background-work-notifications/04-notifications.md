@@ -1,6 +1,8 @@
 ---
-layout: page
+layout: default
 title: "Chapter 20: Background Work & Notifications — Notifications"
+parent: "Chapter 20: Background Work & Notifications"
+nav_order: 4
 ---
 
 ## Section 3 · Notifications

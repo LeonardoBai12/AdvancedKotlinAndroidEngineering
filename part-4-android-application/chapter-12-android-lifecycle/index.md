@@ -1,6 +1,9 @@
 ---
-layout: page
+layout: default
 title: "Chapter 12: Android Lifecycle"
+parent: "Part IV — Android Application Layer"
+nav_order: 2
+has_children: true
 ---
 
 *[← Back to Part IV](../)*

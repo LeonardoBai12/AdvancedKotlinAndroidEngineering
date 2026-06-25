@@ -1,6 +1,9 @@
 ---
-layout: page
+layout: default
 title: "Chapter 11: The Android Compilation Pipeline"
+parent: "Part IV — Android Application Layer"
+nav_order: 1
+has_children: true
 ---
 *From Kotlin source to a running app: what happens when you press Build*
 

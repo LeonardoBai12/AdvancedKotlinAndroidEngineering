@@ -1,6 +1,8 @@
 ---
-layout: page
+layout: default
 title: "D — Dependency Inversion Principle"
+parent: "Chapter 17: SOLID Principles"
+nav_order: 5
 ---
 
 'High-level modules should not depend on low-level modules. Both should depend on abstractions.' Source-code dependencies are inverted relative to the flow of control: business logic does not depend on implementation details — the details depend on abstractions defined by the business logic. This is the backbone of Clean Architecture and of testability.

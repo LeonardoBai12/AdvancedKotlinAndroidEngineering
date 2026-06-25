@@ -1,6 +1,8 @@
 ---
-layout: page
+layout: default
 title: "S — Single Responsibility Principle"
+parent: "Chapter 17: SOLID Principles"
+nav_order: 1
 ---
 
 *Five design principles by Robert C. Martin, in practical Kotlin and Android*

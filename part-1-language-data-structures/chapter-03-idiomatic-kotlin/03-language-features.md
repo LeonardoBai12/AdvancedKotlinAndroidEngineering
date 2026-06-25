@@ -1,6 +1,8 @@
 ---
-layout: page
+layout: default
 title: "Chapter 3: Idiomatic Kotlin — Language Features"
+parent: "Chapter 3: Idiomatic Kotlin"
+nav_order: 3
 ---
 
 ## Null Safety

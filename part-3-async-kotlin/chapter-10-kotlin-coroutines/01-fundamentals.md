@@ -1,6 +1,8 @@
 ---
-layout: page
+layout: default
 title: "Chapter 10: Kotlin Coroutines"
+parent: "Chapter 10: Kotlin Coroutines"
+nav_order: 1
 ---
 
 *Suspension, scopes, dispatchers, builders, cancellation, Flow, and Android lifecycle*

@@ -1,6 +1,8 @@
 ---
-layout: page
+layout: default
 title: "I — Interface Segregation Principle"
+parent: "Chapter 17: SOLID Principles"
+nav_order: 4
 ---
 
 'Clients should not be forced to depend on interfaces they do not use.' Split large 'fat' interfaces into smaller, focused ones so an implementer only takes on what it actually needs. A fat interface forces classes to implement methods that make no sense for them — a `Robot` worker forced to implement `eat()` and `sleep()` ends up throwing `UnsupportedOperationException`.

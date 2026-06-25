@@ -1,6 +1,8 @@
 ---
-layout: page
+layout: default
 title: "Chapter 6: Kotlin Collections"
+parent: "Chapter 6: Kotlin Collections"
+nav_order: 1
 ---
 
 *Hierarchy, Lists, Sets, Maps, Arrays, Sequences, and the full operation toolkit*

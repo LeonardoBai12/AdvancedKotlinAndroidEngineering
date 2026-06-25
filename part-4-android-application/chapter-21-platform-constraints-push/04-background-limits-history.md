@@ -1,6 +1,8 @@
 ---
-layout: page
+layout: default
 title: "Chapter 21: Platform Constraints & Push — Background Execution Limits History"
+parent: "Chapter 21: Platform Constraints & Push"
+nav_order: 4
 ---
 
 ## Section 4 · Background Execution Limits — A Version-by-Version History

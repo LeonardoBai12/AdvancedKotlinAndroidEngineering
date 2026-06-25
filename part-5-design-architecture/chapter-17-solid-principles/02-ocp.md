@@ -1,6 +1,8 @@
 ---
-layout: page
+layout: default
 title: "O — Open-Closed Principle"
+parent: "Chapter 17: SOLID Principles"
+nav_order: 2
 ---
 
 The OCP was coined in 1988 by Bertrand Meyer. Martin's formulation:

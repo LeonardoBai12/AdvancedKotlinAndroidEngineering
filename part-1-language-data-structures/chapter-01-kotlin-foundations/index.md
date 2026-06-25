@@ -1,6 +1,9 @@
 ---
-layout: page
+layout: default
 title: "Chapter 1: Kotlin Foundations"
+parent: "Part I — Language & Data Structures"
+nav_order: 1
+has_children: true
 ---
 
 *[← Back to Part](../)*

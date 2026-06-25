@@ -1,6 +1,9 @@
 ---
-layout: page
+layout: default
 title: "Chapter 18: Architecture & Pragmatic Wisdom"
+parent: "Part V — Design & Architecture"
+nav_order: 3
+has_children: true
 ---
 
 *[← Back to Part](../)*

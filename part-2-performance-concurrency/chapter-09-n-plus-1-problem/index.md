@@ -1,6 +1,9 @@
 ---
-layout: page
+layout: default
 title: "Chapter 9: The N+1 Problem"
+parent: "Part II — Performance & Concurrency Theory"
+nav_order: 3
+has_children: true
 ---
 *API design, BFF, GraphQL, ORM lazy loading, and cache-aside*
 

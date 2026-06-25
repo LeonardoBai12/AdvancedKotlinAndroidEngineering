@@ -1,6 +1,8 @@
 ---
-layout: page
+layout: default
 title: "Chapter 15: Android Security — Hardening & Checklist"
+parent: "Chapter 15: Android Security"
+nav_order: 3
 ---
 
 ## Code Obfuscation & R8

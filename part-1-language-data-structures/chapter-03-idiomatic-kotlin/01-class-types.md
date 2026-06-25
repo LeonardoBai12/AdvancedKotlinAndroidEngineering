@@ -1,6 +1,8 @@
 ---
-layout: page
+layout: default
 title: "Chapter 3: Idiomatic Kotlin"
+parent: "Chapter 3: Idiomatic Kotlin"
+nav_order: 1
 ---
 
 *The language features that set Kotlin apart — and when to reach for each*

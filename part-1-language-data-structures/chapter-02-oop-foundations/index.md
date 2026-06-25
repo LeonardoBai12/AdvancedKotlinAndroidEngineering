@@ -1,6 +1,9 @@
 ---
-layout: page
+layout: default
 title: "Chapter 2: OOP Foundations"
+parent: "Part I — Language & Data Structures"
+nav_order: 2
+has_children: true
 ---
 *The four pillars of Object-Oriented Programming, with idiomatic Kotlin*
 

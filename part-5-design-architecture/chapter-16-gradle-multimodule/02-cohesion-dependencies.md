@@ -1,6 +1,8 @@
 ---
-layout: page
+layout: default
 title: "Chapter 16: Gradle & Multi-Module Architecture — Cohesion & Dependencies"
+parent: "Chapter 16: Gradle & Multi-Module Architecture"
+nav_order: 2
 ---
 
 ## Component Cohesion — REP, CCP, and CRP

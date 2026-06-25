@@ -1,6 +1,8 @@
 ---
-layout: page
+layout: default
 title: "Chapter 16: Android OS Internals — App Launch & Zygote"
+parent: "Chapter 16: Android OS Internals"
+nav_order: 2
 ---
 
 ## What Is Zygote?

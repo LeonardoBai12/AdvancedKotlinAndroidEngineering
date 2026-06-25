@@ -1,6 +1,8 @@
 ---
-layout: page
+layout: default
 title: "Chapter 3: Idiomatic Kotlin — Functions & Extensions"
+parent: "Chapter 3: Idiomatic Kotlin"
+nav_order: 2
 ---
 
 ## inline functions

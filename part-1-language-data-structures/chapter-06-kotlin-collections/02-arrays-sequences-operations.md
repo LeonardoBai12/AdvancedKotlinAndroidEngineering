@@ -1,6 +1,8 @@
 ---
-layout: page
+layout: default
 title: "Chapter 6: Kotlin Collections — Arrays, Sequences & Operations"
+parent: "Chapter 6: Kotlin Collections"
+nav_order: 2
 ---
 
 ## Arrays & Primitive Arrays

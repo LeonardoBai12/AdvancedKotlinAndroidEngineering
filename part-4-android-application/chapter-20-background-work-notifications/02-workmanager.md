@@ -1,6 +1,8 @@
 ---
-layout: page
+layout: default
 title: "Chapter 20: Background Work & Notifications — WorkManager"
+parent: "Chapter 20: Background Work & Notifications"
+nav_order: 2
 ---
 
 ## Section 1 · WorkManager

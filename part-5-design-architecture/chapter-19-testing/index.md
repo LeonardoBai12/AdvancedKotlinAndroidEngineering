@@ -1,6 +1,9 @@
 ---
-layout: page
+layout: default
 title: "Chapter 19: Testing"
+parent: "Part V — Design & Architecture"
+nav_order: 4
+has_children: true
 ---
 
 *[← Back to Part](../)*

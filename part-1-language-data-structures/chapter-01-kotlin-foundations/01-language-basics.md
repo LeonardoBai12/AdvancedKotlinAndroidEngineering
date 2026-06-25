@@ -1,6 +1,8 @@
 ---
-layout: page
+layout: default
 title: "Chapter 1: Kotlin Foundations"
+parent: "Chapter 1: Kotlin Foundations"
+nav_order: 1
 ---
 
 *Programming basics, the JVM, data types, variables, operators, and control flow*

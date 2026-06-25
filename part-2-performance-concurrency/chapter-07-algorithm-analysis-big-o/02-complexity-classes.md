@@ -1,6 +1,8 @@
 ---
-layout: page
+layout: default
 title: "Chapter 7: Algorithm Analysis & Big O — Complexity Classes"
+parent: "Chapter 7: Algorithm Analysis & Big O"
+nav_order: 2
 ---
 
 ## O(1) — Constant Time

@@ -1,6 +1,7 @@
 ---
-layout: page
-title: Advanced Kotlin & Android Engineering
+layout: home
+title: "Advanced Kotlin & Android Engineering"
+nav_order: 1
 ---
 
 A unified, deep-dive reference covering the Kotlin language, data structures, concurrency, the Android application layer, architecture, testing, and tooling — written for senior-level interview preparation and day-to-day engineering.

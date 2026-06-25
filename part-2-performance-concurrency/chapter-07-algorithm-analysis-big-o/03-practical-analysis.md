@@ -1,6 +1,8 @@
 ---
-layout: page
+layout: default
 title: "Chapter 7: Algorithm Analysis & Big O — Practical Analysis"
+parent: "Chapter 7: Algorithm Analysis & Big O"
+nav_order: 3
 ---
 
 ## The Interview Flow — Two Sum as a Case Study
