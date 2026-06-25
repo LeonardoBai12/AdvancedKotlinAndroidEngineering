@@ -1,6 +1,8 @@
 ---
-layout: page
+layout: default
 title: "Part IV — Android Application Layer"
+nav_order: 5
+has_children: true
 ---
 
 *[← Back to Guide Index](../)*

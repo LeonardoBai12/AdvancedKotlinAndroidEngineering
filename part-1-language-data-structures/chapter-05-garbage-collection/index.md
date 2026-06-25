@@ -1,6 +1,9 @@
 ---
-layout: page
-title: "Chapter 5: Garbage Collection"
+layout: default
+title: Garbage Collection
+parent: "Part I — Language & Data Structures"
+nav_order: 5
+has_children: true
 ---
 *Automatic memory management, reachability, leaks, and cleanup hooks*
 

@@ -1,6 +1,8 @@
 ---
-layout: page
-title: "Chapter 19: Testing — Testing Strategies"
+layout: default
+title: Testing Strategies
+parent: Testing
+nav_order: 2
 ---
 
 ## Integration Tests

@@ -1,6 +1,8 @@
 ---
-layout: page
-title: "Chapter 18: Architecture & Pragmatic Wisdom"
+layout: default
+title: Clean Architecture Mvvm
+parent: "Architecture & Pragmatic Wisdom"
+nav_order: 1
 ---
 
 *Clean Architecture layers, MVVM, core classes, feature organisation, and pragmatic principles*

@@ -1,6 +1,8 @@
 ---
-layout: page
-title: "Chapter 16: Android OS Internals — IPC Mechanisms"
+layout: default
+title: Ipc Mechanisms
+parent: Android OS Internals
+nav_order: 3
 ---
 
 ## Why IPC Exists

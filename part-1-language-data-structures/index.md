@@ -1,6 +1,8 @@
 ---
-layout: page
+layout: default
 title: "Part I — Language & Data Structures"
+nav_order: 2
+has_children: true
 ---
 
 *[← Back to Guide Index](../)*

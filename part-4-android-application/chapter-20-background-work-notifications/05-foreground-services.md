@@ -1,6 +1,8 @@
 ---
-layout: page
-title: "Chapter 20: Background Work & Notifications — Foreground Services"
+layout: default
+title: Foreground Services
+parent: "Background Work & Notifications"
+nav_order: 5
 ---
 
 ## Section 4 · Foreground Services

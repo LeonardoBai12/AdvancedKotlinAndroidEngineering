@@ -1,6 +1,9 @@
 ---
-layout: page
-title: "Chapter 3: Idiomatic Kotlin"
+layout: default
+title: Idiomatic Kotlin
+parent: "Part I — Language & Data Structures"
+nav_order: 3
+has_children: true
 ---
 
 *[← Back to Part](../)*

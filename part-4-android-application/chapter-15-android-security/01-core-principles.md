@@ -1,6 +1,8 @@
 ---
-layout: page
-title: "Chapter 15: Android Security"
+layout: default
+title: Core Principles
+parent: Android Security
+nav_order: 1
 ---
 
 *Five pragmatic practices, secure storage, networking, crypto, and OWASP*

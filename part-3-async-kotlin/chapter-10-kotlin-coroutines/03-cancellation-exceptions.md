@@ -1,6 +1,8 @@
 ---
-layout: page
-title: "Chapter 10: Kotlin Coroutines — Cancellation & Exceptions"
+layout: default
+title: Cancellation Exceptions
+parent: Kotlin Coroutines
+nav_order: 3
 ---
 
 ## Part 3 · Cancellation & Exception Handling

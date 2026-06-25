@@ -1,6 +1,8 @@
 ---
-layout: page
-title: "Chapter 1: Kotlin Foundations — Control Flow & Style"
+layout: default
+title: Control Flow Style
+parent: Kotlin Foundations
+nav_order: 3
 ---
 
 ## Conditional Control Flow

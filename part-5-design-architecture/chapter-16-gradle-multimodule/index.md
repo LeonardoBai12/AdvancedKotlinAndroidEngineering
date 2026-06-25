@@ -1,6 +1,9 @@
 ---
-layout: page
-title: "Chapter 16: Gradle & Multi-Module Architecture"
+layout: default
+title: "Gradle & Multi-Module Architecture"
+parent: "Part V — Design & Architecture"
+nav_order: 1
+has_children: true
 ---
 
 *[← Back to Part](../)*

@@ -1,6 +1,8 @@
 ---
-layout: page
-title: "Chapter 12: Android Lifecycle — Lifecycle Fundamentals"
+layout: default
+title: Lifecycle Fundamentals
+parent: Android Lifecycle
+nav_order: 1
 ---
 
 *Activity, Fragment, Compose, configuration changes, and surviving process death*

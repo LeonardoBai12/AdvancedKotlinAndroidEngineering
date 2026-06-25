@@ -1,6 +1,9 @@
 ---
-layout: page
-title: "Chapter 15: Android Security"
+layout: default
+title: Android Security
+parent: "Part IV — Android Application Layer"
+nav_order: 5
+has_children: true
 ---
 
 *[← Back to Part](../)*

@@ -1,6 +1,8 @@
 ---
-layout: page
-title: "Chapter 10: Kotlin Coroutines — Channels"
+layout: default
+title: Channels
+parent: Kotlin Coroutines
+nav_order: 5
 ---
 
 ## Part 5 · Channels — Coroutine Communication Primitives

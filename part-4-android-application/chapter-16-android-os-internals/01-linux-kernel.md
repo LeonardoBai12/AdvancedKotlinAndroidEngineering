@@ -1,6 +1,8 @@
 ---
-layout: page
-title: "Chapter 16: Android OS Internals — Linux Kernel & Architecture"
+layout: default
+title: Linux Kernel
+parent: Android OS Internals
+nav_order: 1
 ---
 
 ## The Android Software Stack

@@ -1,6 +1,8 @@
 ---
-layout: page
-title: "Chapter 10: Kotlin Coroutines — Coroutine Builders"
+layout: default
+title: Coroutine Builders
+parent: Kotlin Coroutines
+nav_order: 2
 ---
 
 ## Part 2 · Coroutine Builders

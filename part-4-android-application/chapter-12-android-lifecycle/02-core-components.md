@@ -1,6 +1,8 @@
 ---
-layout: page
-title: "Chapter 12: Android Lifecycle — Core App Components"
+layout: default
+title: Core Components
+parent: Android Lifecycle
+nav_order: 2
 ---
 
 *Service, BroadcastReceiver, ContentProvider — and how they fit in Clean Architecture*

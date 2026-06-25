@@ -1,6 +1,9 @@
 ---
-layout: page
-title: "Chapter 16: Android OS Internals"
+layout: default
+title: Android OS Internals
+parent: "Part IV — Android Application Layer"
+nav_order: 6
+has_children: true
 ---
 
 *[← Back to Part](../)*

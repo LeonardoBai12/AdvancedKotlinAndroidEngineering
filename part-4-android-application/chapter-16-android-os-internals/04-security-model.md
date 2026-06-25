@@ -1,6 +1,8 @@
 ---
-layout: page
-title: "Chapter 16: Android OS Internals — Security Model: Sandboxing & SELinux"
+layout: default
+title: Security Model
+parent: Android OS Internals
+nav_order: 4
 ---
 
 ## Android's Security Model

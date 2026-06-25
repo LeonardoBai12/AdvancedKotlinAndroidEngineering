@@ -1,6 +1,8 @@
 ---
-layout: page
+layout: default
 title: "Part II — Performance & Concurrency Theory"
+nav_order: 3
+has_children: true
 ---
 
 *[← Back to Guide Index](../)*

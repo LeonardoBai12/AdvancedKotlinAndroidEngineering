@@ -1,6 +1,8 @@
 ---
-layout: page
-title: "Quick Reference & When to Apply"
+layout: default
+title: Quick Reference
+parent: SOLID Principles
+nav_order: 6
 ---
 
 | Principle | Question that triggers it | Solution |

@@ -1,6 +1,8 @@
 ---
-layout: page
-title: "Chapter 21: Platform Constraints & Push — AlarmManager"
+layout: default
+title: Alarm Manager
+parent: "Platform Constraints & Push"
+nav_order: 2
 ---
 
 ## Section 2 · AlarmManager

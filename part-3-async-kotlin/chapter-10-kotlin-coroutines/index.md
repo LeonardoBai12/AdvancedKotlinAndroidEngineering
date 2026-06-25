@@ -1,6 +1,9 @@
 ---
-layout: page
-title: "Chapter 10: Kotlin Coroutines"
+layout: default
+title: Kotlin Coroutines
+parent: "Part III — Asynchronous Kotlin"
+nav_order: 1
+has_children: true
 ---
 
 *[← Back to Part](../)*

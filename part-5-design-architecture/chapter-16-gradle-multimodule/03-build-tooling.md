@@ -1,6 +1,8 @@
 ---
-layout: page
-title: "Chapter 16: Gradle & Multi-Module Architecture — Build Tooling"
+layout: default
+title: Build Tooling
+parent: "Gradle & Multi-Module Architecture"
+nav_order: 3
 ---
 
 ## Version Catalogs — the libs.versions.toml

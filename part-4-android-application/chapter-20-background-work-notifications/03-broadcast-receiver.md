@@ -1,6 +1,8 @@
 ---
-layout: page
-title: "Chapter 20: Background Work & Notifications — BroadcastReceiver"
+layout: default
+title: Broadcast Receiver
+parent: "Background Work & Notifications"
+nav_order: 3
 ---
 
 ## Section 2 · BroadcastReceiver — Deep Dive

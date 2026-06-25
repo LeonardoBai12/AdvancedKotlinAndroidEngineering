@@ -1,6 +1,8 @@
 ---
-layout: page
-title: "Chapter 21: Platform Constraints & Push — Doze Mode, App Standby & Battery Optimisation"
+layout: default
+title: Doze Standby Battery
+parent: "Platform Constraints & Push"
+nav_order: 1
 ---
 
 ## Section 1 · Doze Mode, App Standby & Battery Optimisation

@@ -1,6 +1,8 @@
 ---
-layout: page
-title: "Chapter 15: Android Security — Data & Network Security"
+layout: default
+title: Data Network Security
+parent: Android Security
+nav_order: 2
 ---
 
 ## Secure Data Storage on Android

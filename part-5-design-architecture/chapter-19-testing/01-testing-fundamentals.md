@@ -1,6 +1,8 @@
 ---
-layout: page
-title: "Chapter 19: Testing"
+layout: default
+title: Testing Fundamentals
+parent: Testing
+nav_order: 1
 ---
 
 *The testing pyramid, FIRST, unit/integration/instrumented tests, and end-to-end with Maestro*

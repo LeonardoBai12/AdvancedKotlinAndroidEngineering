@@ -1,6 +1,8 @@
 ---
-layout: page
+layout: default
 title: "Part III — Asynchronous Kotlin"
+nav_order: 4
+has_children: true
 ---
 
 *[← Back to Guide Index](../)*

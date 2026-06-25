@@ -1,6 +1,9 @@
 ---
-layout: page
-title: "Chapter 4: Memory & Hashing Fundamentals"
+layout: default
+title: "Memory & Hashing Fundamentals"
+parent: "Part I — Language & Data Structures"
+nav_order: 4
+has_children: true
 ---
 *Arrays under the hood, the equals/hashCode contract, and how hashing works*
 

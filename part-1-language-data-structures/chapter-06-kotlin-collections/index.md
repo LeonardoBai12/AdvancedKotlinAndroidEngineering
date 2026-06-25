@@ -1,6 +1,9 @@
 ---
-layout: page
-title: "Chapter 6: Kotlin Collections"
+layout: default
+title: Kotlin Collections
+parent: "Part I — Language & Data Structures"
+nav_order: 6
+has_children: true
 ---
 
 *[← Back to Part](../)*

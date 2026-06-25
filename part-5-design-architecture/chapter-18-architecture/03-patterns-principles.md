@@ -1,6 +1,8 @@
 ---
-layout: page
-title: "Chapter 18: Architecture & Pragmatic Wisdom — Patterns & Principles"
+layout: default
+title: Patterns Principles
+parent: "Architecture & Pragmatic Wisdom"
+nav_order: 3
 ---
 
 ## Putting It Together — A Feature in a Multi-Module App
