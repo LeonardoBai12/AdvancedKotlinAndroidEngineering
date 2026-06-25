@@ -1,7 +1,7 @@
 ---
 layout: default
-title: "Chapter 20: Background Work & Notifications — Foreground Services"
-parent: "Chapter 20: Background Work & Notifications"
+title: Foreground Services
+parent: "Background Work & Notifications"
 nav_order: 5
 ---
 

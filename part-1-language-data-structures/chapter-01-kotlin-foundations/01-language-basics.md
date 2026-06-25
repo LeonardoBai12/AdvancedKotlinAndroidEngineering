@@ -1,7 +1,7 @@
 ---
 layout: default
-title: "Chapter 1: Kotlin Foundations"
-parent: "Chapter 1: Kotlin Foundations"
+title: Language Basics
+parent: Kotlin Foundations
 nav_order: 1
 ---
 

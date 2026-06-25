@@ -1,7 +1,7 @@
 ---
 layout: default
-title: "Chapter 10: Kotlin Coroutines — Flow"
-parent: "Chapter 10: Kotlin Coroutines"
+title: Flow
+parent: Kotlin Coroutines
 nav_order: 4
 ---
 

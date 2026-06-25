@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Chapter 19: Testing"
+title: Testing
 parent: "Part V — Design & Architecture"
 nav_order: 4
 has_children: true

@@ -1,7 +1,7 @@
 ---
 layout: default
-title: "Chapter 16: Android OS Internals — Security Model: Sandboxing & SELinux"
-parent: "Chapter 16: Android OS Internals"
+title: Security Model
+parent: Android OS Internals
 nav_order: 4
 ---
 

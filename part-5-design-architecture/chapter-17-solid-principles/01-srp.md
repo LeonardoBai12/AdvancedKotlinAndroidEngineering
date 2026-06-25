@@ -1,7 +1,7 @@
 ---
 layout: default
-title: "S — Single Responsibility Principle"
-parent: "Chapter 17: SOLID Principles"
+title: Srp
+parent: SOLID Principles
 nav_order: 1
 ---
 

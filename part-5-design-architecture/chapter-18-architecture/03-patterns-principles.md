@@ -1,7 +1,7 @@
 ---
 layout: default
-title: "Chapter 18: Architecture & Pragmatic Wisdom — Patterns & Principles"
-parent: "Chapter 18: Architecture & Pragmatic Wisdom"
+title: Patterns Principles
+parent: "Architecture & Pragmatic Wisdom"
 nav_order: 3
 ---
 

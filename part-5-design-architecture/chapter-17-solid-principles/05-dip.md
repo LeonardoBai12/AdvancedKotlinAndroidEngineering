@@ -1,7 +1,7 @@
 ---
 layout: default
-title: "D — Dependency Inversion Principle"
-parent: "Chapter 17: SOLID Principles"
+title: Dip
+parent: SOLID Principles
 nav_order: 5
 ---
 

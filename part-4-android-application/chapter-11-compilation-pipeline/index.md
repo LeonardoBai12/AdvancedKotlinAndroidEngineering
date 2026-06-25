@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Chapter 11: The Android Compilation Pipeline"
+title: The Android Compilation Pipeline
 parent: "Part IV — Android Application Layer"
 nav_order: 1
 has_children: true

@@ -1,7 +1,7 @@
 ---
 layout: default
-title: "I — Interface Segregation Principle"
-parent: "Chapter 17: SOLID Principles"
+title: Isp
+parent: SOLID Principles
 nav_order: 4
 ---
 

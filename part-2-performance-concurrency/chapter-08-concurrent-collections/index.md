@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Chapter 8: ConcurrentHashMap & Concurrent Collections"
+title: "ConcurrentHashMap & Concurrent Collections"
 parent: "Part II — Performance & Concurrency Theory"
 nav_order: 2
 has_children: true

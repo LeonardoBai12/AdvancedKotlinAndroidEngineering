@@ -1,7 +1,7 @@
 ---
 layout: default
-title: "Chapter 16: Android OS Internals — Linux Kernel & Architecture"
-parent: "Chapter 16: Android OS Internals"
+title: Linux Kernel
+parent: Android OS Internals
 nav_order: 1
 ---
 

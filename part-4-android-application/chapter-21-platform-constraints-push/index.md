@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Chapter 21: Platform Constraints & Push"
+title: "Platform Constraints & Push"
 parent: "Part IV — Android Application Layer"
 nav_order: 8
 has_children: true

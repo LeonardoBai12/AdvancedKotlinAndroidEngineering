@@ -1,7 +1,7 @@
 ---
 layout: default
-title: "Chapter 6: Kotlin Collections"
-parent: "Chapter 6: Kotlin Collections"
+title: Collection Types
+parent: Kotlin Collections
 nav_order: 1
 ---
 

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Chapter 15: Android Security"
+title: Android Security
 parent: "Part IV — Android Application Layer"
 nav_order: 5
 has_children: true

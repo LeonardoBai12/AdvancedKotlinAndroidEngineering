@@ -1,7 +1,7 @@
 ---
 layout: default
-title: "Chapter 15: Android Security — Data & Network Security"
-parent: "Chapter 15: Android Security"
+title: Data Network Security
+parent: Android Security
 nav_order: 2
 ---
 

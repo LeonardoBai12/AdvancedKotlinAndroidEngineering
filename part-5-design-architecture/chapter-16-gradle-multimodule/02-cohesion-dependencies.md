@@ -1,7 +1,7 @@
 ---
 layout: default
-title: "Chapter 16: Gradle & Multi-Module Architecture — Cohesion & Dependencies"
-parent: "Chapter 16: Gradle & Multi-Module Architecture"
+title: Cohesion Dependencies
+parent: "Gradle & Multi-Module Architecture"
 nav_order: 2
 ---
 

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Chapter 5: Garbage Collection"
+title: Garbage Collection
 parent: "Part I — Language & Data Structures"
 nav_order: 5
 has_children: true

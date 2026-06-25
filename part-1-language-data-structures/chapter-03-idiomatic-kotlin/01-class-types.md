@@ -1,7 +1,7 @@
 ---
 layout: default
-title: "Chapter 3: Idiomatic Kotlin"
-parent: "Chapter 3: Idiomatic Kotlin"
+title: Class Types
+parent: Idiomatic Kotlin
 nav_order: 1
 ---
 

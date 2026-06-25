@@ -1,7 +1,7 @@
 ---
 layout: default
-title: "Chapter 7: Algorithm Analysis & Big O — Practical Analysis"
-parent: "Chapter 7: Algorithm Analysis & Big O"
+title: Practical Analysis
+parent: "Algorithm Analysis & Big O"
 nav_order: 3
 ---
 

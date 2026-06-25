@@ -1,7 +1,7 @@
 ---
 layout: default
-title: "Chapter 15: Android Security"
-parent: "Chapter 15: Android Security"
+title: Core Principles
+parent: Android Security
 nav_order: 1
 ---
 

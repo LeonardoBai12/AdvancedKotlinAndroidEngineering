@@ -1,7 +1,7 @@
 ---
 layout: default
-title: "Chapter 10: Kotlin Coroutines — Coroutine Builders"
-parent: "Chapter 10: Kotlin Coroutines"
+title: Coroutine Builders
+parent: Kotlin Coroutines
 nav_order: 2
 ---
 

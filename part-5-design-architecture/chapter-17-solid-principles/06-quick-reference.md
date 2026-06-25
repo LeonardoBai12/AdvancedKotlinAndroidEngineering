@@ -1,7 +1,7 @@
 ---
 layout: default
-title: "Quick Reference & When to Apply"
-parent: "Chapter 17: SOLID Principles"
+title: Quick Reference
+parent: SOLID Principles
 nav_order: 6
 ---
 

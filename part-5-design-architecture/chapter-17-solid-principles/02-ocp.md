@@ -1,7 +1,7 @@
 ---
 layout: default
-title: "O — Open-Closed Principle"
-parent: "Chapter 17: SOLID Principles"
+title: Ocp
+parent: SOLID Principles
 nav_order: 2
 ---
 

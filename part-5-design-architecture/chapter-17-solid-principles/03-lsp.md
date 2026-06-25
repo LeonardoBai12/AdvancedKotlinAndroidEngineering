@@ -1,7 +1,7 @@
 ---
 layout: default
-title: "L — Liskov Substitution Principle"
-parent: "Chapter 17: SOLID Principles"
+title: Lsp
+parent: SOLID Principles
 nav_order: 3
 ---
 

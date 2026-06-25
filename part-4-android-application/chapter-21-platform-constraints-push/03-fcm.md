@@ -1,7 +1,7 @@
 ---
 layout: default
-title: "Chapter 21: Platform Constraints & Push — Firebase Cloud Messaging"
-parent: "Chapter 21: Platform Constraints & Push"
+title: Fcm
+parent: "Platform Constraints & Push"
 nav_order: 3
 ---
 

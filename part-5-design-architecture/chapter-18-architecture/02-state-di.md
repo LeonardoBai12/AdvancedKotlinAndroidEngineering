@@ -1,7 +1,7 @@
 ---
 layout: default
-title: "Chapter 18: Architecture & Pragmatic Wisdom — State & DI"
-parent: "Chapter 18: Architecture & Pragmatic Wisdom"
+title: State Di
+parent: "Architecture & Pragmatic Wisdom"
 nav_order: 2
 ---
 

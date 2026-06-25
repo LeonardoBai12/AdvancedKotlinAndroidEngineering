@@ -1,7 +1,7 @@
 ---
 layout: default
-title: "Chapter 3: Idiomatic Kotlin — Language Features"
-parent: "Chapter 3: Idiomatic Kotlin"
+title: Language Features
+parent: Idiomatic Kotlin
 nav_order: 3
 ---
 

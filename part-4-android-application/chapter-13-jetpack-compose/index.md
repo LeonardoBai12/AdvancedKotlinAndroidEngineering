@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Chapter 13: Jetpack Compose Fundamentals"
+title: Jetpack Compose Fundamentals
 parent: "Part IV — Android Application Layer"
 nav_order: 3
 has_children: true

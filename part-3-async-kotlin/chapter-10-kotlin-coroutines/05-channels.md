@@ -1,7 +1,7 @@
 ---
 layout: default
-title: "Chapter 10: Kotlin Coroutines — Channels"
-parent: "Chapter 10: Kotlin Coroutines"
+title: Channels
+parent: Kotlin Coroutines
 nav_order: 5
 ---
 

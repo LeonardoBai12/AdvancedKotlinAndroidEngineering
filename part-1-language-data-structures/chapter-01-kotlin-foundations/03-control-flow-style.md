@@ -1,7 +1,7 @@
 ---
 layout: default
-title: "Chapter 1: Kotlin Foundations — Control Flow & Style"
-parent: "Chapter 1: Kotlin Foundations"
+title: Control Flow Style
+parent: Kotlin Foundations
 nav_order: 3
 ---
 

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Chapter 10: Kotlin Coroutines"
+title: Kotlin Coroutines
 parent: "Part III — Asynchronous Kotlin"
 nav_order: 1
 has_children: true

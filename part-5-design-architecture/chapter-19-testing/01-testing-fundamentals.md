@@ -1,7 +1,7 @@
 ---
 layout: default
-title: "Chapter 19: Testing"
-parent: "Chapter 19: Testing"
+title: Testing Fundamentals
+parent: Testing
 nav_order: 1
 ---
 

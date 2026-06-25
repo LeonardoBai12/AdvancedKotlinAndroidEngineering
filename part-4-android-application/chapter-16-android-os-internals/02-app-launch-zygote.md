@@ -1,7 +1,7 @@
 ---
 layout: default
-title: "Chapter 16: Android OS Internals — App Launch & Zygote"
-parent: "Chapter 16: Android OS Internals"
+title: App Launch Zygote
+parent: Android OS Internals
 nav_order: 2
 ---
 

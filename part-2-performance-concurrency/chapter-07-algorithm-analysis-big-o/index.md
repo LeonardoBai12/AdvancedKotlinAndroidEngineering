@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Chapter 7: Algorithm Analysis & Big O"
+title: "Algorithm Analysis & Big O"
 parent: "Part II — Performance & Concurrency Theory"
 nav_order: 1
 has_children: true

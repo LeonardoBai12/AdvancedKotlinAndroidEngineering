@@ -1,7 +1,7 @@
 ---
 layout: default
-title: "Chapter 16: Gradle & Multi-Module Architecture"
-parent: "Chapter 16: Gradle & Multi-Module Architecture"
+title: Gradle And Modules
+parent: "Gradle & Multi-Module Architecture"
 nav_order: 1
 ---
 

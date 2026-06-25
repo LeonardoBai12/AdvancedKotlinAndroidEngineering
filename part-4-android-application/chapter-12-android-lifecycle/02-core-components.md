@@ -1,7 +1,7 @@
 ---
 layout: default
-title: "Chapter 12: Android Lifecycle — Core App Components"
-parent: "Chapter 12: Android Lifecycle"
+title: Core Components
+parent: Android Lifecycle
 nav_order: 2
 ---
 

@@ -1,7 +1,7 @@
 ---
 layout: default
-title: "Chapter 3: Idiomatic Kotlin — Functions & Extensions"
-parent: "Chapter 3: Idiomatic Kotlin"
+title: Functions Extensions
+parent: Idiomatic Kotlin
 nav_order: 2
 ---
 

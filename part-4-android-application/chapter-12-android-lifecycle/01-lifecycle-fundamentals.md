@@ -1,7 +1,7 @@
 ---
 layout: default
-title: "Chapter 12: Android Lifecycle — Lifecycle Fundamentals"
-parent: "Chapter 12: Android Lifecycle"
+title: Lifecycle Fundamentals
+parent: Android Lifecycle
 nav_order: 1
 ---
 

@@ -1,7 +1,7 @@
 ---
 layout: default
-title: "Chapter 7: Algorithm Analysis & Big O — Complexity Classes"
-parent: "Chapter 7: Algorithm Analysis & Big O"
+title: Complexity Classes
+parent: "Algorithm Analysis & Big O"
 nav_order: 2
 ---
 

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Chapter 4: Memory & Hashing Fundamentals"
+title: "Memory & Hashing Fundamentals"
 parent: "Part I — Language & Data Structures"
 nav_order: 4
 has_children: true

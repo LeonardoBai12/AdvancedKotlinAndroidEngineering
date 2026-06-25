@@ -1,7 +1,7 @@
 ---
 layout: default
-title: "Chapter 1: Kotlin Foundations — Variables & Operators"
-parent: "Chapter 1: Kotlin Foundations"
+title: Variables Operators
+parent: Kotlin Foundations
 nav_order: 2
 ---
 

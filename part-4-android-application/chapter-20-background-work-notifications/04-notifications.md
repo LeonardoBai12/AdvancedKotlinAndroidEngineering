@@ -1,7 +1,7 @@
 ---
 layout: default
-title: "Chapter 20: Background Work & Notifications — Notifications"
-parent: "Chapter 20: Background Work & Notifications"
+title: Notifications
+parent: "Background Work & Notifications"
 nav_order: 4
 ---
 

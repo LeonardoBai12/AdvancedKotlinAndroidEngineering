@@ -1,7 +1,7 @@
 ---
 layout: default
-title: "Chapter 15: Android Security — Hardening & Checklist"
-parent: "Chapter 15: Android Security"
+title: Hardening Checklist
+parent: Android Security
 nav_order: 3
 ---
 

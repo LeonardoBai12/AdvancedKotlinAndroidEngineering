@@ -1,7 +1,7 @@
 ---
 layout: default
-title: "Chapter 10: Kotlin Coroutines — Cancellation & Exceptions"
-parent: "Chapter 10: Kotlin Coroutines"
+title: Cancellation Exceptions
+parent: Kotlin Coroutines
 nav_order: 3
 ---
 

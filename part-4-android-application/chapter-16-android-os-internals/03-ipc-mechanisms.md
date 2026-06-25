@@ -1,7 +1,7 @@
 ---
 layout: default
-title: "Chapter 16: Android OS Internals — IPC Mechanisms"
-parent: "Chapter 16: Android OS Internals"
+title: Ipc Mechanisms
+parent: Android OS Internals
 nav_order: 3
 ---
 

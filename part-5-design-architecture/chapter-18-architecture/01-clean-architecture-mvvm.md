@@ -1,7 +1,7 @@
 ---
 layout: default
-title: "Chapter 18: Architecture & Pragmatic Wisdom"
-parent: "Chapter 18: Architecture & Pragmatic Wisdom"
+title: Clean Architecture Mvvm
+parent: "Architecture & Pragmatic Wisdom"
 nav_order: 1
 ---
 

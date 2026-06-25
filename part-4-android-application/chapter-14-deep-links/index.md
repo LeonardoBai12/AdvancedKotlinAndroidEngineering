@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Chapter 14: Android Deep Links"
+title: Android Deep Links
 parent: "Part IV — Android Application Layer"
 nav_order: 4
 has_children: true

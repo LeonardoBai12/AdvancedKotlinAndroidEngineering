@@ -1,7 +1,7 @@
 ---
 layout: default
-title: "Chapter 20: Background Work & Notifications — BroadcastReceiver"
-parent: "Chapter 20: Background Work & Notifications"
+title: Broadcast Receiver
+parent: "Background Work & Notifications"
 nav_order: 3
 ---
 
