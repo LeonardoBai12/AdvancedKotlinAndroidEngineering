@@ -127,6 +127,76 @@ nums.single { it == 3 }              // 3   (throws if 0 or >1 match)
 nums.fold("") { acc, n -> "$acc$n" }  // "12345"
 ```
 
+## String vs StringBuilder
+
+`String` in Kotlin (and Java) is **immutable**. Every concatenation with `+` creates a brand-new `String` object on the heap and copies all the characters from the operands. In isolation that is fine. Inside a loop, it compounds:
+
+```kotlin
+var result = ""
+for (item in list) {
+    result += item  // new String allocated on every iteration
+}
+```
+
+If `list` has N items of average length L, the first iteration copies L characters, the second 2L, the third 3L — the total work is L + 2L + 3L + … + NL = **O(N² · L)**. A loop over 10,000 items with 10-character strings does ~500 million character copies.
+
+`StringBuilder` maintains a mutable `char[]` internally and appends in place, doubling capacity when the buffer fills — the same amortised strategy as `ArrayList`. Total work: **O(N · L)**.
+
+```kotlin
+val sb = StringBuilder()
+for (item in list) {
+    sb.append(item)      // O(1) amortised — no copy of previous content
+}
+val result = sb.toString()  // one final String allocation
+```
+
+**When Kotlin handles it for you:** string templates (`"$a $b"`) and simple `+` chains outside loops are compiled to `StringBuilder` automatically by `kotlinc`. The danger is explicit `+=` inside a loop — the compiler does not optimize that pattern, and the quadratic cost is real.
+
+> **Interview Tip:**
+>
+> If asked to build a string from a list, always reach for `joinToString()` (which uses `StringBuilder` internally) or `buildString {}`. Never accumulate with `+=` in a loop.
+
+---
+
+## SparseArray — Android's Integer-Key Map
+
+`HashMap<Int, V>` on the JVM requires **boxing**: every `Int` key is wrapped into an `Integer` object, adding object-header overhead and GC pressure. For a map with 500 view positions or resource IDs, that is 500 unnecessary heap allocations.
+
+`SparseArray<V>` eliminates boxing entirely. It stores keys as a plain `int[]` and values in a parallel `Object[]`, with no wrapper objects. Internally it maintains the key array in sorted order and uses **binary search** for lookups — O(log N) instead of O(1) — but the eliminated boxing and improved cache locality make it faster than `HashMap<Int, V>` in practice for the small collections typical in Android code.
+
+| Type | Key storage | Lookup | Memory | Best for |
+| --- | --- | --- | --- | --- |
+| `HashMap<Int, V>` | Boxed `Integer` | O(1) avg | Higher (object overhead) | Large N, O(1) needed |
+| `SparseArray<V>` | Primitive `int` | O(log N) | Lower (no boxing) | Small N (< ~1000), int keys |
+
+Android provides specialised variants for both ends:
+
+| Class | Key | Value | Use case |
+| --- | --- | --- | --- |
+| `SparseArray<V>` | `int` | Object | General int-keyed map |
+| `SparseIntArray` | `int` | `int` | Both sides unboxed (e.g. position → count) |
+| `SparseBooleanArray` | `int` | `boolean` | Checked states, selection flags |
+| `SparseLongArray` | `int` | `long` | ID → timestamp maps |
+
+```kotlin
+// HashMap<Int, String> -- Int is boxed to Integer on every put/get
+val map = HashMap<Int, String>()
+map[42] = "item"
+
+// SparseArray<String> -- 42 stored as primitive int, no boxing
+val sparse = SparseArray<String>()
+sparse.put(42, "item")
+val value = sparse.get(42)     // "item"
+sparse.delete(42)
+val size = sparse.size()       // 0
+```
+
+**When to use SparseArray:** when the keys are integers and the map stays small — view IDs, adapter positions, resource IDs, checked item indices. The binary-search overhead is negligible at these sizes, and the memory savings and reduced GC pressure are real.
+
+**When to prefer HashMap:** when the collection can grow large (thousands of entries), when O(1) guarantees matter, or when you are in a context that expects a `Map<Int, V>` interface (interop, libraries).
+
+---
+
 ## Quick Decision Guide
 
 | You need… | Use |
@@ -141,7 +211,9 @@ nums.fold("") { acc, n -> "$acc$n" }  // "12345"
 | Key-value pairs sorted by key | TreeMap |
 | Fixed-size numeric data, memory-critical | IntArray / LongArray |
 | Large collection + multiple chained ops | Sequence (asSequence) |
-| Thread-safe concurrent read/write | ConcurrentHashMap (Chapter 5) |
+| Thread-safe concurrent read/write | ConcurrentHashMap (Chapter 8) |
+| Int-keyed map, small N, no boxing | SparseArray / SparseIntArray |
+| Build a string from many parts | StringBuilder / buildString {} |
 
 ### Best practices
 
