@@ -12,3 +12,4 @@ _site/
 # Bundler local install
 vendor/bundle/
 .bundle/
+.DS_Store
