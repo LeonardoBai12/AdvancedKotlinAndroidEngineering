@@ -226,4 +226,96 @@ val size = sparse.size()       // 0
 
 ---
 
+---
+
+## Sorting Complexity and the Two-Pointer Technique
+
+### `.sorted()` and `.sortedBy()` — O(n log n)
+
+Kotlin's `sorted()`, `sortedBy()`, and `sortedWith()` delegate to Java's `Arrays.sort()` / `Collections.sort()`, which use **TimSort** — a hybrid merge sort / insertion sort algorithm. The complexity is **O(n log n)** in all cases (best, average, and worst). You do not control the internal algorithm; calling `.sorted()` on a list of size n always pays the full O(n log n) cost plus a full traversal to build the output list.
+
+```kotlin
+val nums = listOf(3, 1, 4, 1, 5, 9, 2, 6)
+val sorted = nums.sorted()       // O(n log n) — TimSort under the hood
+val byLen = words.sortedBy { it.length }  // same complexity, custom key
+```
+
+**Interview context:** When asked about the complexity of `.sorted()`, the correct answer is O(n log n) — it must traverse the entire collection and sort it, and no comparison-based sort can do better than O(n log n) in the general case. The constant factor depends on the input (TimSort is particularly fast on nearly-sorted data), but asymptotically it is always O(n log n).
+
+---
+
+### The Two-Pointer Technique
+
+The two-pointer pattern is one of the most effective tools for achieving O(n) time on problems that would otherwise require O(n log n) sorting or O(n²) nested loops. It works by placing one pointer at each end of a sorted array and moving them toward each other based on a comparison condition.
+
+**Key insight:** if the input is already sorted, you can exploit that structure to avoid a second sort pass.
+
+---
+
+#### Problem: Squares of a Sorted Array
+
+Given an integer array `nums` sorted in non-decreasing order, return an array of the squares of each number, also sorted in non-decreasing order.
+
+```
+Input:  [-4, -1, 0, 3, 10]
+Output: [0, 1, 9, 16, 100]
+
+Input:  [-7, -3, 2, 3, 11]
+Output: [4, 9, 9, 49, 121]
+```
+
+**Naive approach — O(n log n):**
+```kotlin
+fun sortedSquares(nums: IntArray): IntArray =
+    nums.map { it * it }.toIntArray().also { it.sort() }
+```
+This works but discards the sorted structure of the input. The sort inside costs O(n log n).
+
+**Optimised approach — O(n) with two pointers:**
+
+The largest squares always come from the elements with the largest absolute value — which are always at the two ends of the sorted input (the most negative or the most positive). Fill the result array from right to left by comparing both ends.
+
+```kotlin
+import kotlin.math.abs
+
+fun sortedSquares(nums: IntArray): IntArray {
+    val result = IntArray(nums.size)
+    var left = 0
+    var right = nums.lastIndex
+
+    for (i in nums.lastIndex downTo 0) {
+        if (abs(nums[left]) < abs(nums[right])) {
+            result[i] = nums[right] * nums[right]
+            right--
+        } else {
+            result[i] = nums[left] * nums[left]
+            left++
+        }
+    }
+    return result
+}
+```
+
+**Why this is O(n):** Each element is visited exactly once. `left` and `right` move toward each other and together cover every index exactly once. No secondary sort is needed because we fill the result in the correct order directly.
+
+**Why it works:** The input is sorted, so the absolute values increase toward both ends. At each step, whichever end has the larger absolute value produces the next largest square and gets moved inward.
+
+| Approach | Time | Space | Notes |
+|---|---|---|---|
+| map + sort | O(n log n) | O(n) | Ignores existing sort order |
+| Two pointers | O(n) | O(n) | Exploits sorted input; fills result from largest to smallest |
+
+---
+
+### When to Reach for Two Pointers
+
+| Signal in the problem | Two-pointer likely applies |
+|---|---|
+| Input is sorted | ✅ Strong signal |
+| Looking for a pair/triple that meets a condition | ✅ (classic two-sum on sorted array) |
+| Need to merge or compare from both ends | ✅ |
+| Subarray or substring with a target property | Consider sliding window instead |
+
+Common two-pointer problems: Two Sum (sorted), Container With Most Water, Valid Palindrome, 3Sum, Trapping Rain Water.
+
 ← [Previous: Collection Types](../01-collection-types/) · [↑ Chapter Index](../)
