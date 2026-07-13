@@ -5,9 +5,9 @@ parent: "Architecture & Pragmatic Wisdom"
 nav_order: 2
 ---
 
-## State & Events — The State Holder Pattern
+## State & Events — Unidirectional Data Flow (UDF)
 
-MVVM says *state flows down, events flow up*, but it does not say how to *shape* that state and those events. The pattern that scales — and the one Google's guidance converges on — models the screen's entire state as a single immutable object and the user's actions as a single sealed event type. This keeps a screen's contract tiny: the View renders one state object and emits events through one function.
+MVVM says *state flows down, events flow up*, but it does not say how to *shape* that state and those events. The pattern that scales — the one Google's architecture guidance names **Unidirectional Data Flow (UDF)** — models the screen's entire state as a single immutable object owned by a **state holder** (the ViewModel), and the user's actions as a single sealed event type. Events flow up into the state holder, the state holder applies them to produce new state, and the new state flows back down — one direction, one loop. This keeps a screen's contract tiny: the View renders one state object and emits events through one function.
 
 ### One state object, not many flows
 
@@ -35,6 +35,29 @@ sealed interface SearchEvent {
     data object OnSearchClick : SearchEvent
 }
 ```
+
+### UDF is a state machine
+
+It is worth recognising what this pattern *is*: a **finite state machine**. Hunt and Thomas define one plainly — *"a state machine is basically just a specification of how to handle events. It consists of a set of states, one of which is the current state. For each state, we list the events that are significant to that state. For each of those events, we define the new current state"* (*The Pragmatic Programmer*, Topic 29). Substitute the vocabulary and the ViewModel appears: the current state is the value in the StateFlow, the sealed event type enumerates every event the machine accepts, and **onEvent** is the transition function — *(current state, event) → new state*. The exhaustive **when** over the sealed type is the transition table, and the compiler refuses to compile a machine with a missing row.
+
+Hunt and Thomas observe that *"state machines are underused by developers"* — and that the transitions can be expressed **purely as data**. For flows that are genuinely stateful — an onboarding sequence, a checkout, a media player — it pays to make the states themselves explicit as a sealed hierarchy rather than as boolean flags inside one data class:
+
+*States as a sealed hierarchy — illegal states unrepresentable*
+
+```kotlin
+// Booleans multiply into illegal combinations:
+//   isLoading = true AND results.isNotEmpty() AND error != null ... which is it?
+// Explicit states cannot express an illegal combination:
+sealed interface CheckoutState {
+    data object Cart          : CheckoutState
+    data object EnteringCard  : CheckoutState
+    data class  Processing(val orderId: String) : CheckoutState
+    data class  Confirmed(val receiptUrl: String) : CheckoutState
+    data class  Failed(val reason: String) : CheckoutState
+}
+```
+
+Each transition lives in **onEvent**, and an event that makes no sense in the current state (a *PayClicked* while already *Processing*) is simply ignored or logged — the machine defines which events are significant to which states. The same idea also has a classic object-oriented formulation, the GoF **State pattern**, where each state is a class implementing its own transitions — see the [Design Patterns](../04-design-patterns/) page. Use the sealed-hierarchy form for UI state; reach for the full State pattern when each state carries substantial behaviour of its own.
 
 ### State vs one-shot events: StateFlow vs SharedFlow
 
@@ -134,7 +157,7 @@ class MainActivity : ComponentActivity() {
 
 > **Key Insight:**
 >
-> This is the State Holder pattern: a single immutable **state** object (StateFlow), a single sealed **event** type funnelled through **onEvent**, and one-shot **UI events** (SharedFlow) kept separate from state. It scales because the screen's entire contract is three things — render this state, call this function, consume these events — no matter how complex the screen becomes.
+> This is Unidirectional Data Flow: a single immutable **state** object (StateFlow), a single sealed **event** type funnelled through **onEvent**, and one-shot **UI events** (SharedFlow) kept separate from state. It scales because the screen's entire contract is three things — render this state, call this function, consume these events — no matter how complex the screen becomes. And because the ViewModel is a state machine with a sealed alphabet, testing it is mechanical: feed an event, assert the new state.
 
 ## Core Classes — Application, DI, and Cross-Cutting Concerns
 

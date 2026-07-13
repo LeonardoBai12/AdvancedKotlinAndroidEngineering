@@ -76,6 +76,62 @@ In Android: this is why the data layer hides Retrofit and Room behind repository
 
 Detect problems as early as possible and report them loudly — a crash at the point of error beats a misleading one five frames later. In Kotlin, lean on **require()**, **check()**, non-nullable types, and sealed result types to make illegal states unrepresentable.
 
+## Juggling the Real World — Four Strategies for Events
+
+Topic 29 of *The Pragmatic Programmer* is the philosophical backbone of every reactive UI. Its premise: **"an event represents the availability of information"** — a button tap, a network response arriving, a database row changing — and **"code that's crafted around events can be more responsive and better decoupled than its more linear counterpart."** But without a strategy, event-driven code collapses into *"a mess of tightly coupled code."* Hunt and Thomas offer four strategies, in increasing order of decoupling — and, remarkably, they map one-to-one onto the history of Android UI programming.
+
+### 1. Finite State Machines
+
+*"A state machine is basically just a specification of how to handle events."* A set of states, one current; for each state, the events that matter and the state each one leads to. The authors' key trick is that the whole machine can be expressed **purely as data** — a transition table — with a couple of lines of code to drive it:
+
+*A transition table as pure data — a multipart message parser*
+
+```kotlin
+enum class ParserState { INITIAL, READING, DONE, ERROR }
+enum class MessageType { HEADER, DATA, TRAILER }
+
+val transitions: Map<ParserState, Map<MessageType, ParserState>> = mapOf(
+    ParserState.INITIAL to mapOf(MessageType.HEADER  to ParserState.READING),
+    ParserState.READING to mapOf(MessageType.DATA    to ParserState.READING,
+                                 MessageType.TRAILER to ParserState.DONE),
+)
+
+var state = ParserState.INITIAL
+while (state != ParserState.DONE && state != ParserState.ERROR) {
+    val msg = nextMessage()
+    state = transitions[state]?.get(msg.type) ?: ParserState.ERROR  // the whole engine
+}
+```
+
+Hunt and Thomas add that nothing forces all transitions to happen in one sitting: *"keeping the state in external storage, and using it to drive a state machine, is a great way to handle workflow requirements"* — a multi-step signup, a KYC flow, an order lifecycle. And they lament that *"state machines are underused by developers."* On Android they are everywhere once you see them: the Activity lifecycle is an FSM the framework drives; a UDF ViewModel is an FSM you drive (see [State & DI](../02-state-di/)).
+
+### 2. The Observer Pattern
+
+An **observable** (the source of events) keeps a list of **observers**, each of which registered a callback; when the event fires, the observable walks the list and invokes each callback with the event. *"It is particularly prevalent in user interface systems, where the callbacks are used to inform the application that some interaction has occurred."* This is every `OnClickListener` ever written — and it is exactly how **LiveData** works with the XML View system: `liveData.observe(lifecycleOwner) { ... }` registers the observer, and LiveData's lifecycle-awareness solves the classic Observer housekeeping problem of *deregistering* (observers are auto-removed on `DESTROYED`, preventing leaks).
+
+But the authors flag two structural problems: **coupling** — every observer must know and register with the observable directly — and **performance** — callbacks are invoked synchronously, inline, so one slow observer stalls the source.
+
+### 3. Publish/Subscribe
+
+*"Publish/Subscribe generalizes the observer pattern, at the same time solving the problems of coupling and performance."* Publishers and subscribers never meet: they connect through **named channels**, and *"the communication between the publisher and subscriber is handled outside your code, and is potentially asynchronous."* Android's `BroadcastReceiver` + intent actions, FCM topics, and a `SharedFlow` used as an event bus are all pub/sub: the emitter does not know who is listening.
+
+The trade-off is honest in the book: pub/sub decouples so well that *"it can be hard to see what is going on in a system that uses pubsub heavily: you can't look at a publisher and immediately see which subscribers are involved."* Anyone who has debugged a global event bus in a large app has lived this — which is why the modern guidance keeps event flows scoped and typed (a `SharedFlow<UiEvent>` per ViewModel) rather than one app-wide bus.
+
+### 4. Reactive Programming and Streams
+
+The final step: **"streams let us treat events as if they were a collection of data"** — a list that grows as events arrive, which you can *"manipulate, combine, filter, and do all the other data-ish things we know so well."* This is precisely RxJava's model: an `Observable<T>` emits over time, operators transform it, and a **subscriber** consumes the result — `subscribe(onNext, onError)` is the same shape the book demonstrates with RxJS. Kotlin's `Flow` is the same idea rebuilt on coroutines: `map`, `filter`, `combine`, `zip`, `debounce` are collection operations lifted onto time. Streams *"unify synchronous and asynchronous processing behind a common, convenient API"* — the reason a Room DAO returning `Flow<List<T>>` and a one-shot network call compose in the same pipeline.
+
+### The four strategies on Android — one timeline
+
+| Strategy | The idea | Android incarnation |
+| --- | --- | --- |
+| Finite State Machine | Events drive explicit state transitions | Activity lifecycle, UDF ViewModel (`onEvent`) |
+| Observer | Callbacks registered directly on a source | View listeners, `LiveData.observe` (XML era) |
+| Publish/Subscribe | Named channels, emitter blind to consumers | `BroadcastReceiver`, FCM, `SharedFlow` events |
+| Reactive Streams | Events as composable collections over time | RxJava, Kotlin `Flow` / `StateFlow` |
+
+These are not four competing choices but four rungs of the same ladder — a modern Compose app uses all of them at once: `Flow` pipelines (streams) feed a ViewModel that is a state machine, whose `StateFlow` the UI observes, while one-shot effects travel over a scoped pub/sub channel.
+
 ## Uncle Bob's Adages
 
 - **'The only way to go fast is to go well.'** Cutting quality to hit a deadline always costs more later.

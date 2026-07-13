@@ -58,11 +58,11 @@ Android sightings: `LayoutInflater` (creates Views from XML), `ViewModelProvider
 
 ---
 
-### Abstract Factory
+### Abstract Factory (also known as Kit)
 
 **Intent:** Provide an interface for creating *families* of related objects without specifying their concrete classes.
 
-The GoF's motivation example is a UI toolkit (WidgetFactory) that needs to support multiple look-and-feels — each creates a consistent set of widgets. The key applicability rule highlighted in the book: *"use when a system must be independent of how its products are created."*
+The GoF's motivation example is a UI toolkit (WidgetFactory) that needs to support multiple look-and-feels — each concrete factory creates a consistent set of widgets. The point is not just creation but **consistency of the family**: *"a Motif scroll bar should be used with a Motif button and a Motif text editor, and that constraint is enforced automatically as a consequence of using a MotifWidgetFactory."* Clients call the creation operations but *"have no knowledge of the concrete classes they are using"* — you choose the family once, by instantiating one concrete factory, and from then on the whole application uses it consistently. The key applicability rule highlighted in the book: *"use when a system must be independent of how its products are created, composed, and represented."*
 
 ```kotlin
 // Abstract factory declares the family
@@ -98,7 +98,24 @@ class ThemeRenderer(private val factory: ThemeFactory) {
 val renderer = ThemeRenderer(HighContrastThemeFactory())
 ```
 
-**Abstract Factory vs Factory Method:** Factory Method uses inheritance (a subclass overrides one creator method). Abstract Factory uses composition (you inject an entire factory object that creates a family).
+The GoF implementation notes show the factory being selected **at run time** — an environment variable decides between `MotifFactory` and `PMFactory` at startup — and suggest a more sophisticated variant: *"you can keep a registry that maps strings to factory objects,"* so new factory subclasses can be registered without modifying existing code. The same moves work in Kotlin:
+
+```kotlin
+// Select the family once at startup (build flavor, remote config, user setting...)
+val factory: ThemeFactory = when (settings.theme) {
+    Theme.HIGH_CONTRAST -> HighContrastThemeFactory()
+    else                -> MaterialThemeFactory()
+}
+
+// Or a registry — new families plug in without touching this code
+val registry = mutableMapOf<String, () -> ThemeFactory>(
+    "material"      to ::MaterialThemeFactory,
+    "high_contrast" to ::HighContrastThemeFactory,
+)
+val chosen = registry.getValue(settings.themeKey).invoke()
+```
+
+**Abstract Factory vs Factory Method:** Factory Method uses inheritance (a subclass overrides one creator method). Abstract Factory uses composition (you inject an entire factory object that creates a family). In Kotlin Multiplatform the two blend naturally: an `expect class HttpClientFactory { fun create(): HttpClient }` with `actual` implementations per platform is a factory whose "family" is *everything platform-specific* — each platform's source set is, in effect, one concrete factory guaranteeing a consistent set of platform products.
 
 ---
 
@@ -180,9 +197,14 @@ Structural patterns describe how classes and objects are composed to form larger
 
 ### Adapter (also known as Wrapper)
 
-**Intent:** Convert the interface of a class into another interface clients expect. Allows classes with incompatible interfaces to work together.
+**Intent:** Convert the interface of a class into another interface clients expect. Allows classes with incompatible interfaces to work together — *"which otherwise would be impossible."*
 
-The GoF book labels this "also known as Wrapper" — and Android uses it by that exact name (`TextureView` wraps `SurfaceTexture`). The Adapter does not change either side; it bridges the gap between them.
+The GoF motivation: *"sometimes a toolkit class, designed for reuse, isn't reusable because its interface doesn't match the domain-specific interface an application requires."* Their example is a drawing editor whose shapes implement a `Shape` interface, and an existing, sophisticated `TextView` class that knows nothing about `Shape`. Changing `TextView` is not viable (you may not own the source, and a toolkit shouldn't adopt one app's interfaces), so you define a `TextShape` that *adapts* `TextView` to `Shape`. The book gives **two ways** to do it:
+
+1. **Class adapter** — inherit `Shape`'s interface *and* `TextView`'s implementation (multiple inheritance in C++; in Kotlin, interface + delegation gets close).
+2. **Object adapter** — implement `Shape` and hold a `TextView` *instance* inside, forwarding calls to it.
+
+The object adapter — composition — is the one that survives in modern practice: it works with any subclass of the adaptee, keeps the adapter independent of the adaptee's internals, and needs no inheritance gymnastics. The Adapter does not change either side; it bridges the gap between them.
 
 ```kotlin
 // Third-party SDK returns its own Location type
@@ -214,6 +236,8 @@ Android SDK sightings:
 - `RecyclerView.Adapter` — adapts a `List<T>` to `View`s
 - `CursorAdapter` — adapts a database `Cursor` to `ListView` rows
 - `OkHttp`'s `Call.Factory` — adapts different HTTP backends to a uniform interface
+
+A modern cross-platform sighting: in a Kotlin Multiplatform app, a shared ViewModel exposes state as a `StateFlow` — which SwiftUI cannot observe. The iOS side wraps it in an `ObservableObject` that subscribes to the shared flow and republishes values through `@Published` properties, forwarding user events back to the shared `onEvent`. That wrapper is a textbook object adapter: the shared ViewModel and SwiftUI are both unchanged; one class bridges their incompatible observation contracts.
 
 ---
 
@@ -347,6 +371,10 @@ From the Compose book: *"State changes over time because of events. The UI shoul
 
 Room DAOs returning `Flow<List<T>>` make the database itself an observable subject — the DAO emits a new list every time the underlying table changes, without polling.
 
+In the XML View era the canonical Observer was **LiveData**: `liveData.observe(lifecycleOwner) { render(it) }` registers a callback exactly as the GoF describe, and its lifecycle-awareness fixes the pattern's classic housekeeping problem — observers auto-deregister on `DESTROYED`, so a rotated Activity never leaks or receives updates it cannot render.
+
+Hunt and Thomas point out the pattern's two structural limits (*The Pragmatic Programmer*, Topic 29): every observer must register directly with the observable, which **couples** them, and callbacks run synchronously inline, so a slow observer becomes a **bottleneck** — problems addressed by Publish/Subscribe and reactive streams, covered in [Patterns & Principles](../03-patterns-principles/). RxJava and `Flow` are that evolution: the *subscriber* of a stream is the Observer pattern generalised over time and freed from synchronous delivery.
+
 ---
 
 ### Strategy
@@ -380,11 +408,16 @@ In Kotlin, a strategy often collapses to a function type — `(List<T>) -> List<
 
 ---
 
-### State
+### State (also known as Objects for States)
 
 **Intent:** Allow an object to alter its behavior when its internal state changes. The object appears to change its class.
 
-From the GoF book: `TCPConnection` behaves differently in `Established`, `Listening`, and `Closed` states. Rather than a massive `when(state)` repeated everywhere, each state is a class that implements only the transitions relevant to it.
+From the GoF book: `TCPConnection` behaves differently in `Established`, `Listening`, and `Closed` states. An abstract `TCPState` declares the common interface (`Open()`, `Close()`, `Acknowledge()`); each subclass implements the behaviour for one state; and whenever the connection changes state, `TCPConnection` swaps the state object it delegates to. The GoF give two applicability signals:
+
+- an object's behavior depends on its state, and it must change its behavior **at run time** depending on that state;
+- operations have *"large, multipart conditional statements that depend on the object's state"* — the same conditional structure repeated across several operations. *"The State pattern puts each branch of the conditional in a separate class. This lets you treat the object's state as an object in its own right."*
+
+So rather than a massive `when(state)` repeated everywhere, each state is a class that implements only the transitions relevant to it.
 
 ```kotlin
 // State interface — all operations the context can perform
@@ -433,6 +466,8 @@ class MusicController(private val player: AudioPlayer) {
 ```
 
 Use when an object has complex conditional logic that depends on internal state and that logic keeps growing. State eliminates the `when`/`if` chains by distributing behavior into dedicated classes.
+
+The State pattern is the object-oriented formulation of a **finite state machine** — the same machine that *The Pragmatic Programmer* recommends expressing as a transition table, and the same shape as a UDF ViewModel's sealed `UiState` + `onEvent` (see [State & DI](../02-state-di/)). The three are one idea at different weights: a transition table when the logic is pure data, a sealed hierarchy with one `when` for UI state, and full State-pattern classes when each state carries substantial behaviour of its own.
 
 ---
 
