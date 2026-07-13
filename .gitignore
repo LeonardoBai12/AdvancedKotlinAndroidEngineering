@@ -13,3 +13,6 @@ _site/
 vendor/bundle/
 .bundle/
 .DS_Store
+
+# Reference material (scanned book pages, large files)
+PDF/
